@@ -1,5 +1,7 @@
 # TextMate bundle for FileMaker Pro
+## (Adapted for Sublime Text 2)
 
+---
 ## Introduction
 
 This is an adaptation of the TextMate Bundle for FileMaker Pro for use in Sublime Text 2.

@@ -4,6 +4,8 @@
 <dict>
 	<key>name</key>
 	<string>Completions: Native</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>settings</key>
 	<dict>
 		<key>completions</key>

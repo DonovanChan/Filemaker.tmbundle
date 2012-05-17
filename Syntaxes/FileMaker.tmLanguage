@@ -145,6 +145,8 @@
 	</array>
 	<key>scopeName</key>
 	<string>source.filemaker</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>uuid</key>
 	<string>B60B1704-B890-43ED-80B5-E5E827CD55A3</string>
 </dict>

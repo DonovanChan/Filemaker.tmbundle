@@ -183,7 +183,7 @@
 			<string>storage.type.method</string>
 		</dict>
 	</array>
-	<key>scopeName</key>
+	<key>scope</key>
 	<string>text.fmlog</string>
 	<key>uuid</key>
 	<string>034E35EE-B4C1-474C-B52E-9B24270FB643</string>

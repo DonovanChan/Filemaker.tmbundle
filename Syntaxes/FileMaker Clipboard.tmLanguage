@@ -525,7 +525,7 @@
 			</array>
 		</dict>
 	</dict>
-	<key>scopeName</key>
+	<key>scope</key>
 	<string>text.xml.filemakerClipboard</string>
 	<key>uuid</key>
 	<string>41B129D5-F561-4C71-B96F-2DEF25CB246F</string>

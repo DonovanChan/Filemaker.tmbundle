@@ -59,7 +59,7 @@
 			<string>(/*:/*&gt;)</string>
 		</dict>
 	</array>
-	<key>scopeName</key>
+	<key>scope</key>
 	<string>source.filemaker.hash</string>
 	<key>uuid</key>
 	<string>E06766B0-3F1B-494C-886E-6CFFEF39FFF0</string>

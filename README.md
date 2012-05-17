@@ -25,14 +25,14 @@ You can set up the bundle as a git repository right where TextMate installs it. 
 
 	mkdir -p ~/Library/Application\ Support/TextMate/Bundles
 	cd ~/Library/Application\ Support/TextMate/Bundles
-	git clone git://github.com/DonovanChan/filemaker.tmbundle.git "FileMaker.tmbundle"
+	git clone git://github.com/DonovanChan/filemaker.tmbundle.git -b SublimeText2 "FileMaker.tmbundle"
 	osascript -e 'tell app "TextMate" to reload bundles'
 
 The TextMate 2 pre-release stores bundles in a different place, however:
 
 	mkdir -p ~/Library/Application\ Support/Avian/Bundles
 	cd ~/Library/Application\ Support/Avian/Bundles
-	git clone git://github.com/DonovanChan/filemaker.tmbundle.git "FileMaker.tmbundle"
+	git clone git://github.com/DonovanChan/filemaker.tmbundle.git -b SublimeText2 "FileMaker.tmbundle"
 
 ## History
 

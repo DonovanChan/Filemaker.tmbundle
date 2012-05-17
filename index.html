@@ -59,6 +59,9 @@ body {
       <p>
         This is a bundle for use in TextMate (text editor for Mac OS). It adds functionality that supports development of FileMaker Pro databases.
       </p>
+	  <p>
+		  <em>Sublime Text 2 users</em>, see the <a href="https://github.com/DonovanChan/filemaker.tmbundle/tree/SublimeText2">SublimeText2 branch</a>. Note, the Sublime Text 2 version currently only supports snippets and syntax highlighting.
+	  </p>
       <p>
         Become a FileMaker ninja with these tools in your belt!
       </p>
@@ -95,6 +98,8 @@ body {
         </li>
         <li>Help section
         </li>
+		<li>Full documention on most commands (displayed when running command with empty input)
+		</li>
       </ul>
       <h2>
         Dependencies
@@ -117,10 +122,12 @@ body {
         See the <a href="http://youtu.be/uq8I1vvuBXg">installation video</a>.
       </p>
       <ol>
-        <li>Install TextMate
+        <li>Install [TextMate](http://macromates.com/)
         </li>
-        <li>Download the files
+        <li>Download the files. (<a href="http://github.com/DonovanChan/filemaker.tmbundle/zipball/master">zip</a> or <a href="http://github.com/DonovanChan/filemaker.tmbundle/tarball/master">tar</a> formats available)
         </li>
+				<li>Uncompress/extract the package contents, if necessary.
+				</li>
         <li>Rename the folder to “filemaker.tmbundle”
         </li>
         <li>Double-click on filemaker.tmbundle
@@ -129,32 +136,40 @@ body {
         </li>
       </ol>
       <h4>
-        Advanced Method
+        For Easy Updates
       </h4>
-      <ol>
-        <li>Clone project into ~/Library/Application Support/TextMate/Bundles
-        </li>
-        <li>Reload bundles in TextMate
-        </li>
-      </ol>
+			<p>You can set up the bundle as a <a href="http://git-scm.com">Git</a> repository right where TextMate installs it. Here are the Terminal commands:</p>
+
+			<pre><code>mkdir -p ~/Library/Application\ Support/TextMate/Bundles
+cd ~/Library/Application\ Support/TextMate/Bundles
+git clone git://github.com/DonovanChan/filemaker.tmbundle.git "FileMaker.tmbundle"
+osascript -e 'tell app "TextMate" to reload bundles'</code></pre>
+
+			<p>The TextMate 2 pre-release stores bundles in a different place, however:</p>
+
+			<pre><code>mkdir -p ~/Library/Application\ Support/Avian/Bundles
+cd ~/Library/Application\ Support/Avian/Bundles
+git clone git://github.com/DonovanChan/filemaker.tmbundle.git "FileMaker.tmbundle"</code></pre>
+
       <h2>
         License
       </h2>
-      <p>
-        (In accordance with original license by Charles Ross)
-      </p>
-      <p>
-        Copyright 2011 Donovan Chandler, Beezwax Datatools
-      </p>
-      <p>
-        Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
-      </p>
-      <p>
-        http://www.apache.org/licenses/LICENSE-2.0
-      </p>
-      <p>
-        Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
-      </p>
+			<p>Copyright 2011-2012  Donovan Chandler, Beezwax Datatools, Inc.
+			donovan_c@beezwax.net
+			</p>
+			<p>This program is free software: you can redistribute it and/or modify
+			it under the terms of the GNU General Public License as published by
+			the Free Software Foundation, either version 3 of the License, or
+			(at your option) any later version.
+			</p>
+			<p>This program is distributed in the hope that it will be useful,
+			but WITHOUT ANY WARRANTY; without even the implied warranty of
+			MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+			GNU General Public License for more details.
+			</p>
+			<p>You should have received a copy of the GNU General Public License
+			along with this program.  If not, see <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.
+			</p>
       <h2>
         Authors
       </h2>
@@ -171,20 +186,10 @@ body {
         Get Involved
       </h2>
       <p>
-        Feel free to submit issues on github or create a fork of your own. You can also email us directly (see Contact section).
+        Feel free to <a href="https://github.com/DonovanChan/filemaker.tmbundle/issues?direction=desc&sort=created&state=open">submit issues</a> on github or create a fork of your own. You can also email me directly (see Contact section).
       </p>
-      <h2>
-        Download
-      </h2>
-      <p>
-        You can download this project in either <a href="http://github.com/DonovanChan/filemaker.tmbundle/zipball/master">zip</a> or <a href="http://github.com/DonovanChan/filemaker.tmbundle/tarball/master">tar</a> formats.
-      </p>
-      <p>
-        You can also clone the project with <a href="http://git-scm.com">Git</a> by running:
-      </p>
-      <pre>
-$ git clone git://github.com/DonovanChan/filemaker.tmbundle
-      </pre>
+			<p>
+				I'd love to see these commands extended to Windows users or any other text editor. Please let me know if you're interested in contributing to that effort.
       <h2>
         Help and FAQ
       </h2>

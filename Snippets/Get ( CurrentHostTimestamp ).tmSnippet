@@ -5,11 +5,11 @@
 	<key>content</key>
 	<string>Get ( CurrentHostTimestamp )</string>
 	<key>name</key>
-	<string>Get ( CurrentHostTimestamp )</string>
+	<string>CurrentHostTimestamp</string>
 	<key>scope</key>
 	<string>source.filemaker</string>
 	<key>tabTrigger</key>
-	<string>getcht</string>
+	<string>get</string>
 	<key>uuid</key>
 	<string>9E3AAB80-A01B-4E18-A35B-991C3C390B23</string>
 </dict>

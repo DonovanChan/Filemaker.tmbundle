@@ -5,11 +5,11 @@
 	<key>content</key>
 	<string>Get ( WindowStyle )</string>
 	<key>name</key>
-	<string>Get ( WindowStyle )</string>
+	<string>WindowStyle</string>
 	<key>scope</key>
 	<string>source.filemaker</string>
 	<key>tabTrigger</key>
-	<string>getws</string>
+	<string>get</string>
 	<key>uuid</key>
 	<string>AE88A94C-BD8B-4216-AAE2-33ECFEAEB995</string>
 </dict>

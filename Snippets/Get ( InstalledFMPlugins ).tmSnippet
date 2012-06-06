@@ -5,11 +5,11 @@
 	<key>content</key>
 	<string>Get ( InstalledFMPlugins )</string>
 	<key>name</key>
-	<string>Get ( InstalledFMPlugins )</string>
+	<string>InstalledFMPlugins</string>
 	<key>scope</key>
 	<string>source.filemaker</string>
 	<key>tabTrigger</key>
-	<string>getpl</string>
+	<string>get</string>
 	<key>uuid</key>
 	<string>AC21797F-06F2-4316-B7C2-D1D2C1119CD1</string>
 </dict>

@@ -5,11 +5,11 @@
 	<key>content</key>
 	<string>Get ( SystemDrive )</string>
 	<key>name</key>
-	<string>Get ( SystemDrive )</string>
+	<string>SystemDrive</string>
 	<key>scope</key>
 	<string>source.filemaker</string>
 	<key>tabTrigger</key>
-	<string>getsd</string>
+	<string>get</string>
 	<key>uuid</key>
 	<string>D36A9233-22D9-4834-89C6-CF2680A08907</string>
 </dict>

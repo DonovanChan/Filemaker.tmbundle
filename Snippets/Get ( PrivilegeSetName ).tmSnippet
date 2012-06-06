@@ -5,11 +5,11 @@
 	<key>content</key>
 	<string>Get ( PrivilegeSetName )</string>
 	<key>name</key>
-	<string>Get ( PrivilegeSetName )</string>
+	<string>PrivilegeSetName</string>
 	<key>scope</key>
 	<string>source.filemaker</string>
 	<key>tabTrigger</key>
-	<string>getpsn</string>
+	<string>get</string>
 	<key>uuid</key>
 	<string>CD426B38-3B59-491D-BD67-E1E4A76F38C3</string>
 </dict>

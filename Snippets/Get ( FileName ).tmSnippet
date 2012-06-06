@@ -5,11 +5,11 @@
 	<key>content</key>
 	<string>Get ( FileName )</string>
 	<key>name</key>
-	<string>Get ( FileName )</string>
+	<string>FileName</string>
 	<key>scope</key>
 	<string>source.filemaker</string>
 	<key>tabTrigger</key>
-	<string>getfn</string>
+	<string>get</string>
 	<key>uuid</key>
 	<string>4BB2AE7E-7DB9-4E42-9EB1-9B1FD12A2B2C</string>
 </dict>

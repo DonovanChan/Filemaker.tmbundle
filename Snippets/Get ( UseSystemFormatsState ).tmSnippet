@@ -5,11 +5,11 @@
 	<key>content</key>
 	<string>Get ( UseSystemFormatsState )</string>
 	<key>name</key>
-	<string>Get ( UseSystemFormatsState )</string>
+	<string>UseSystemFormatsState</string>
 	<key>scope</key>
 	<string>source.filemaker</string>
 	<key>tabTrigger</key>
-	<string>getusfs</string>
+	<string>get</string>
 	<key>uuid</key>
 	<string>7FF7FC0D-5BC1-43EC-9ED6-64E38F472E7A</string>
 </dict>

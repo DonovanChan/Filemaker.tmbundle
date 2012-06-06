@@ -5,11 +5,11 @@
 	<key>content</key>
 	<string>Get ( StatusAreaState )</string>
 	<key>name</key>
-	<string>Get ( StatusAreaState )</string>
+	<string>StatusAreaState</string>
 	<key>scope</key>
 	<string>source.filemaker</string>
 	<key>tabTrigger</key>
-	<string>getsas</string>
+	<string>get</string>
 	<key>uuid</key>
 	<string>C65F9F6B-CF52-4B26-B022-D0FB3A47ED32</string>
 </dict>

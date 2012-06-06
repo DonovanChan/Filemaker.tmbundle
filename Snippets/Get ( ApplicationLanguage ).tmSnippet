@@ -5,11 +5,11 @@
 	<key>content</key>
 	<string>Get ( ApplicationLanguage )</string>
 	<key>name</key>
-	<string>Get ( ApplicationLanguage )</string>
+	<string>ApplicationLanguage</string>
 	<key>scope</key>
 	<string>source.filemaker</string>
 	<key>tabTrigger</key>
-	<string>getal</string>
+	<string>get</string>
 	<key>uuid</key>
 	<string>6C5463E0-8FA3-4756-8F35-ED90F6289D52</string>
 </dict>

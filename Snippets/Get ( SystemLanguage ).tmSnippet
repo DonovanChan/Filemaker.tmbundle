@@ -5,11 +5,11 @@
 	<key>content</key>
 	<string>Get ( SystemLanguage )</string>
 	<key>name</key>
-	<string>Get ( SystemLanguage )</string>
+	<string>SystemLanguage</string>
 	<key>scope</key>
 	<string>source.filemaker</string>
 	<key>tabTrigger</key>
-	<string>getsyslang</string>
+	<string>get</string>
 	<key>uuid</key>
 	<string>F6230CD8-0248-46C7-A7D8-EE847E558036</string>
 </dict>

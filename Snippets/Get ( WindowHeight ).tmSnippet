@@ -5,11 +5,11 @@
 	<key>content</key>
 	<string>Get ( WindowHeight )</string>
 	<key>name</key>
-	<string>Get ( WindowHeight )</string>
+	<string>WindowHeight</string>
 	<key>scope</key>
 	<string>source.filemaker</string>
 	<key>tabTrigger</key>
-	<string>getwh</string>
+	<string>get</string>
 	<key>uuid</key>
 	<string>A92E8479-67FB-446A-B53F-DD3715D453E5</string>
 </dict>

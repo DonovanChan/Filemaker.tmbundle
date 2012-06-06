@@ -5,11 +5,11 @@
 	<key>content</key>
 	<string>Get ( LayoutViewState )</string>
 	<key>name</key>
-	<string>Get ( LayoutViewState )</string>
+	<string>LayoutViewState</string>
 	<key>scope</key>
 	<string>source.filemaker</string>
 	<key>tabTrigger</key>
-	<string>getlvs</string>
+	<string>get</string>
 	<key>uuid</key>
 	<string>8D07781A-4F7F-4FE7-917F-1F0526D850D5</string>
 </dict>

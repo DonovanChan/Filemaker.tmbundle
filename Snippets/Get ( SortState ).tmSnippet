@@ -5,11 +5,11 @@
 	<key>content</key>
 	<string>Get ( SortState )</string>
 	<key>name</key>
-	<string>Get ( SortState )</string>
+	<string>SortState</string>
 	<key>scope</key>
 	<string>source.filemaker</string>
 	<key>tabTrigger</key>
-	<string>getss</string>
+	<string>get</string>
 	<key>uuid</key>
 	<string>86671D0E-659D-4F57-972A-B87540525F68</string>
 </dict>

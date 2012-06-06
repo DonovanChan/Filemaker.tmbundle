@@ -5,11 +5,11 @@
 	<key>content</key>
 	<string>Get ( RequestOmitState )</string>
 	<key>name</key>
-	<string>Get ( RequestOmitState )</string>
+	<string>RequestOmitState</string>
 	<key>scope</key>
 	<string>source.filemaker</string>
 	<key>tabTrigger</key>
-	<string>getros</string>
+	<string>get</string>
 	<key>uuid</key>
 	<string>6F037DF2-B44D-43D4-820E-6001AA96D01A</string>
 </dict>

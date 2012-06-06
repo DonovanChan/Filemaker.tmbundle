@@ -5,11 +5,11 @@
 	<key>content</key>
 	<string>Get ( PersistentID )</string>
 	<key>name</key>
-	<string>Get ( PersistentID )</string>
+	<string>PersistentID</string>
 	<key>scope</key>
 	<string>source.filemaker</string>
 	<key>tabTrigger</key>
-	<string>getid</string>
+	<string>get</string>
 	<key>uuid</key>
 	<string>DB53D464-D159-4AFB-B306-1B645337C9D4</string>
 </dict>

@@ -5,11 +5,11 @@
 	<key>content</key>
 	<string>Get ( NetworkProtocol )</string>
 	<key>name</key>
-	<string>Get ( NetworkProtocol )</string>
+	<string>NetworkProtocol</string>
 	<key>scope</key>
 	<string>source.filemaker</string>
 	<key>tabTrigger</key>
-	<string>getnp</string>
+	<string>get</string>
 	<key>uuid</key>
 	<string>D17B283B-CE30-4DC5-AF5D-1AA61DB5918D</string>
 </dict>

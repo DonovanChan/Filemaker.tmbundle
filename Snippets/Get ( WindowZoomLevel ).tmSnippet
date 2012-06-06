@@ -5,11 +5,11 @@
 	<key>content</key>
 	<string>Get ( WindowZoomLevel )</string>
 	<key>name</key>
-	<string>Get ( WindowZoomLevel )</string>
+	<string>WindowZoomLevel</string>
 	<key>scope</key>
 	<string>source.filemaker</string>
 	<key>tabTrigger</key>
-	<string>getwzl</string>
+	<string>get</string>
 	<key>uuid</key>
 	<string>D9EB8F98-0AF3-43E6-89A7-C739410E6C3E</string>
 </dict>

@@ -5,11 +5,11 @@
 	<key>content</key>
 	<string>Get ( PreferencesPath )</string>
 	<key>name</key>
-	<string>Get ( PreferencesPath )</string>
+	<string>PreferencesPath</string>
 	<key>scope</key>
 	<string>source.filemaker</string>
 	<key>tabTrigger</key>
-	<string>getpp</string>
+	<string>get</string>
 	<key>uuid</key>
 	<string>C9C03551-1CD8-43CC-ADCA-163024C2CE7C</string>
 </dict>

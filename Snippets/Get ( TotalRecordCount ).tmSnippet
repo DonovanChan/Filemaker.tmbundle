@@ -5,11 +5,11 @@
 	<key>content</key>
 	<string>Get ( TotalRecordCount )</string>
 	<key>name</key>
-	<string>Get ( TotalRecordCount )</string>
+	<string>TotalRecordCount</string>
 	<key>scope</key>
 	<string>source.filemaker</string>
 	<key>tabTrigger</key>
-	<string>gettrc</string>
+	<string>get</string>
 	<key>uuid</key>
 	<string>39FADB5D-40E1-4BC5-9EF3-BDE8D85A30FC</string>
 </dict>

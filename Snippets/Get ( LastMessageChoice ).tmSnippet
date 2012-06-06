@@ -5,11 +5,11 @@
 	<key>content</key>
 	<string>Get ( LastMessageChoice )</string>
 	<key>name</key>
-	<string>Get ( LastMessageChoice )</string>
+	<string>LastMessageChoice</string>
 	<key>scope</key>
 	<string>source.filemaker</string>
 	<key>tabTrigger</key>
-	<string>getlmc</string>
+	<string>get</string>
 	<key>uuid</key>
 	<string>A8242CD2-3B39-4AAB-9A8E-92681E199907</string>
 </dict>

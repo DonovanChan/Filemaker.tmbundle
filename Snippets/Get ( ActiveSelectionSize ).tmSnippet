@@ -5,11 +5,11 @@
 	<key>content</key>
 	<string>Get ( ActiveSelectionSize )</string>
 	<key>name</key>
-	<string>Get ( ActiveSelectionSize )</string>
+	<string>ActiveSelectionSize</string>
 	<key>scope</key>
 	<string>source.filemaker</string>
 	<key>tabTrigger</key>
-	<string>getassize</string>
+	<string>get</string>
 	<key>uuid</key>
 	<string>6B03ABE5-C7F0-4654-9168-BCD14A1953B1</string>
 </dict>

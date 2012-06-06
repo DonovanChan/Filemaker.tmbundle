@@ -5,11 +5,11 @@
 	<key>content</key>
 	<string>Get ( SystemVersion )</string>
 	<key>name</key>
-	<string>Get ( SystemVersion )</string>
+	<string>SystemVersion</string>
 	<key>scope</key>
 	<string>source.filemaker</string>
 	<key>tabTrigger</key>
-	<string>getsysver</string>
+	<string>get</string>
 	<key>uuid</key>
 	<string>91BE537B-83BF-4BC8-BAA1-29B032BE8EBF</string>
 </dict>

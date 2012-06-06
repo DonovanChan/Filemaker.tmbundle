@@ -5,11 +5,11 @@
 	<key>content</key>
 	<string>Get ( WindowMode )</string>
 	<key>name</key>
-	<string>Get ( WindowMode )</string>
+	<string>WindowMode</string>
 	<key>scope</key>
 	<string>source.filemaker</string>
 	<key>tabTrigger</key>
-	<string>getwm</string>
+	<string>get</string>
 	<key>uuid</key>
 	<string>4548420A-71D1-409F-90D1-88069B26EB0C</string>
 </dict>

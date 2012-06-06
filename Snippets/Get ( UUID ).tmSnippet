@@ -5,11 +5,11 @@
 	<key>content</key>
 	<string>Get ( UUID )</string>
 	<key>name</key>
-	<string>Get ( UUID )</string>
+	<string>UUID</string>
 	<key>scope</key>
 	<string>source.filemaker</string>
 	<key>tabTrigger</key>
-	<string>getid</string>
+	<string>get</string>
 	<key>uuid</key>
 	<string>E5A01547-626F-480D-8D8F-041C63A55178</string>
 </dict>

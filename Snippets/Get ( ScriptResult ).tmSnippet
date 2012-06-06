@@ -5,11 +5,11 @@
 	<key>content</key>
 	<string>Get ( ScriptResult )</string>
 	<key>name</key>
-	<string>Get ( ScriptResult )</string>
+	<string>ScriptResult</string>
 	<key>scope</key>
 	<string>source.filemaker</string>
 	<key>tabTrigger</key>
-	<string>getsr</string>
+	<string>get</string>
 	<key>uuid</key>
 	<string>5206EBF6-8092-4F29-BBCF-3BC5D7F02D11</string>
 </dict>

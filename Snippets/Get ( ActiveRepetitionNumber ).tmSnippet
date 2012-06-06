@@ -5,11 +5,11 @@
 	<key>content</key>
 	<string>Get ( ActiveRepetitionNumber )</string>
 	<key>name</key>
-	<string>Get ( ActiveRepetitionNumber )</string>
+	<string>ActiveRepetitionNumber</string>
 	<key>scope</key>
 	<string>source.filemaker</string>
 	<key>tabTrigger</key>
-	<string>getarn</string>
+	<string>get</string>
 	<key>uuid</key>
 	<string>8D385A1F-A34C-4318-9AA4-B736C8927B7C</string>
 </dict>

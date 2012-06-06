@@ -5,11 +5,11 @@
 	<key>content</key>
 	<string>Get ( FoundCount )</string>
 	<key>name</key>
-	<string>Get ( FoundCount )</string>
+	<string>FoundCount</string>
 	<key>scope</key>
 	<string>source.filemaker</string>
 	<key>tabTrigger</key>
-	<string>getfc</string>
+	<string>get</string>
 	<key>uuid</key>
 	<string>5C3B532D-8804-4632-913B-2CF96BAB8A87</string>
 </dict>

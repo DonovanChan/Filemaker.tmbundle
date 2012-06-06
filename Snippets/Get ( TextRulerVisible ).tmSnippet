@@ -5,11 +5,11 @@
 	<key>content</key>
 	<string>Get ( TextRulerVisible )</string>
 	<key>name</key>
-	<string>Get ( TextRulerVisible )</string>
+	<string>TextRulerVisible</string>
 	<key>scope</key>
 	<string>source.filemaker</string>
 	<key>tabTrigger</key>
-	<string>gettrv</string>
+	<string>get</string>
 	<key>uuid</key>
 	<string>D2498AA0-E153-41B4-AEA0-776D6803C2B9</string>
 </dict>

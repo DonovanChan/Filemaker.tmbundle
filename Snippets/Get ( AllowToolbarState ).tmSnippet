@@ -5,11 +5,11 @@
 	<key>content</key>
 	<string>Get ( AllowToolbarState )</string>
 	<key>name</key>
-	<string>Get ( AllowToolbarState )</string>
+	<string>AllowToolbarState</string>
 	<key>scope</key>
 	<string>source.filemaker</string>
 	<key>tabTrigger</key>
-	<string>getats</string>
+	<string>get</string>
 	<key>uuid</key>
 	<string>F89F0224-9BA6-43D7-B2A6-826CC6CAC5CA</string>
 </dict>

@@ -5,11 +5,11 @@
 	<key>content</key>
 	<string>Get ( TriggerModifierKeys )</string>
 	<key>name</key>
-	<string>Get ( TriggerModifierKeys )</string>
+	<string>TriggerModifierKeys</string>
 	<key>scope</key>
 	<string>source.filemaker</string>
 	<key>tabTrigger</key>
-	<string>gettmk</string>
+	<string>get</string>
 	<key>uuid</key>
 	<string>20ED1EE8-54A3-4FA6-99F5-25A6CFEAD8D9</string>
 </dict>

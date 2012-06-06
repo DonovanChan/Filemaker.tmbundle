@@ -5,11 +5,11 @@
 	<key>content</key>
 	<string>Get ( HostName )</string>
 	<key>name</key>
-	<string>Get ( HostName )</string>
+	<string>HostName</string>
 	<key>scope</key>
 	<string>source.filemaker</string>
 	<key>tabTrigger</key>
-	<string>gethn</string>
+	<string>get</string>
 	<key>uuid</key>
 	<string>10834F8C-619D-4DD9-AB82-1A8224CD3E3D</string>
 </dict>

@@ -5,11 +5,11 @@
 	<key>content</key>
 	<string>Get ( TriggerKeystroke )</string>
 	<key>name</key>
-	<string>Get ( TriggerKeystroke )</string>
+	<string>TriggerKeystroke</string>
 	<key>scope</key>
 	<string>source.filemaker</string>
 	<key>tabTrigger</key>
-	<string>gettk</string>
+	<string>get</string>
 	<key>uuid</key>
 	<string>8A26D9A6-F14B-4E0C-A143-DA2402E9BA70</string>
 </dict>

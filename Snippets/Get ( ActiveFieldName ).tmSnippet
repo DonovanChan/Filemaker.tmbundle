@@ -5,11 +5,11 @@
 	<key>content</key>
 	<string>Get ( ActiveFieldName )</string>
 	<key>name</key>
-	<string>Get ( ActiveFieldName )</string>
+	<string>ActiveFieldName</string>
 	<key>scope</key>
 	<string>source.filemaker</string>
 	<key>tabTrigger</key>
-	<string>getafn</string>
+	<string>get</string>
 	<key>uuid</key>
 	<string>6E84EDE1-320A-4865-BA56-92C56251D776</string>
 </dict>

@@ -5,11 +5,11 @@
 	<key>content</key>
 	<string>Get ( WindowContentWidth )</string>
 	<key>name</key>
-	<string>Get ( WindowContentWidth )</string>
+	<string>WindowContentWidth</string>
 	<key>scope</key>
 	<string>source.filemaker</string>
 	<key>tabTrigger</key>
-	<string>getwcw</string>
+	<string>get</string>
 	<key>uuid</key>
 	<string>19D27A61-6249-476E-AE91-5AC7F6DBB4A4</string>
 </dict>

@@ -5,11 +5,11 @@
 	<key>content</key>
 	<string>Get ( HostIPAddress )</string>
 	<key>name</key>
-	<string>Get ( HostIPAddress )</string>
+	<string>HostIPAddress</string>
 	<key>scope</key>
 	<string>source.filemaker</string>
 	<key>tabTrigger</key>
-	<string>gethipa</string>
+	<string>get</string>
 	<key>uuid</key>
 	<string>0A8C2E38-5A57-427E-8622-A4F4E9C0DD8C</string>
 </dict>

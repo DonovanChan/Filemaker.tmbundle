@@ -5,11 +5,11 @@
 	<key>content</key>
 	<string>Get ( CurrentDate )</string>
 	<key>name</key>
-	<string>Get ( CurrentDate )</string>
+	<string>CurrentDate</string>
 	<key>scope</key>
 	<string>source.filemaker</string>
 	<key>tabTrigger</key>
-	<string>getcd</string>
+	<string>get</string>
 	<key>uuid</key>
 	<string>CBA65C5D-69A4-4426-8E85-1E5BC0506A15</string>
 </dict>

@@ -5,11 +5,11 @@
 	<key>content</key>
 	<string>Get ( FileMakerPath )</string>
 	<key>name</key>
-	<string>Get ( FileMakerPath )</string>
+	<string>FileMakerPath</string>
 	<key>scope</key>
 	<string>source.filemaker</string>
 	<key>tabTrigger</key>
-	<string>getfmpath</string>
+	<string>get</string>
 	<key>uuid</key>
 	<string>798747EA-6870-49EE-B898-85597347DBA0</string>
 </dict>

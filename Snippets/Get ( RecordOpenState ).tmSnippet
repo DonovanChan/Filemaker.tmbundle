@@ -5,11 +5,11 @@
 	<key>content</key>
 	<string>Get ( RecordOpenState )</string>
 	<key>name</key>
-	<string>Get ( RecordOpenState )</string>
+	<string>RecordOpenState</string>
 	<key>scope</key>
 	<string>source.filemaker</string>
 	<key>tabTrigger</key>
-	<string>getros</string>
+	<string>get</string>
 	<key>uuid</key>
 	<string>6F7B8DC0-7318-4978-8401-0CC43F508A21</string>
 </dict>

@@ -5,11 +5,11 @@
 	<key>content</key>
 	<string>Get ( FileSize )</string>
 	<key>name</key>
-	<string>Get ( FileSize )</string>
+	<string>FileSize</string>
 	<key>scope</key>
 	<string>source.filemaker</string>
 	<key>tabTrigger</key>
-	<string>getfs</string>
+	<string>get</string>
 	<key>uuid</key>
 	<string>34A89FB7-F8A1-4A25-A1B8-7905350A9EAF</string>
 </dict>

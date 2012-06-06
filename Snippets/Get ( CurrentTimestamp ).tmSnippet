@@ -5,11 +5,11 @@
 	<key>content</key>
 	<string>Get ( CurrentTimestamp )</string>
 	<key>name</key>
-	<string>Get ( CurrentTimestamp )</string>
+	<string>CurrentTimestamp</string>
 	<key>scope</key>
 	<string>source.filemaker</string>
 	<key>tabTrigger</key>
-	<string>getcts</string>
+	<string>get</string>
 	<key>uuid</key>
 	<string>E00878B2-A235-465E-9EF6-2B546BD64AB1</string>
 </dict>

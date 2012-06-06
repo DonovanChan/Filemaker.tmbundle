@@ -5,11 +5,11 @@
 	<key>content</key>
 	<string>Get ( SystemNICAddress )</string>
 	<key>name</key>
-	<string>Get ( SystemNICAddress )</string>
+	<string>SystemNICAddress</string>
 	<key>scope</key>
 	<string>source.filemaker</string>
 	<key>tabTrigger</key>
-	<string>getsysnic</string>
+	<string>get</string>
 	<key>uuid</key>
 	<string>1175215F-D66A-4A30-947A-E3DF64ADA91F</string>
 </dict>

@@ -5,11 +5,11 @@
 	<key>content</key>
 	<string>Get ( RecordModificationCount )</string>
 	<key>name</key>
-	<string>Get ( RecordModificationCount )</string>
+	<string>RecordModificationCount</string>
 	<key>scope</key>
 	<string>source.filemaker</string>
 	<key>tabTrigger</key>
-	<string>getrmc</string>
+	<string>get</string>
 	<key>uuid</key>
 	<string>29C870E5-7AFA-4D0E-9586-D8BEA5559E1E</string>
 </dict>

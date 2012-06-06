@@ -5,11 +5,11 @@
 	<key>content</key>
 	<string>Get ( ActiveLayoutObjectName )</string>
 	<key>name</key>
-	<string>Get ( ActiveLayoutObjectName )</string>
+	<string>ActiveLayoutObjectName</string>
 	<key>scope</key>
 	<string>source.filemaker</string>
 	<key>tabTrigger</key>
-	<string>getalon</string>
+	<string>get</string>
 	<key>uuid</key>
 	<string>1293CC9A-CB39-471E-B502-B3636CD7B6E0</string>
 </dict>

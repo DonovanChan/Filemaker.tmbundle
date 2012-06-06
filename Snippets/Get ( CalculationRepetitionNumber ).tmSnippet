@@ -5,11 +5,11 @@
 	<key>content</key>
 	<string>Get ( CalculationRepetitionNumber )</string>
 	<key>name</key>
-	<string>Get ( CalculationRepetitionNumber )</string>
+	<string>CalculationRepetitionNumber</string>
 	<key>scope</key>
 	<string>source.filemaker</string>
 	<key>tabTrigger</key>
-	<string>getcrn</string>
+	<string>get</string>
 	<key>uuid</key>
 	<string>52C9B76B-E580-41E3-9341-DE043C5C446C</string>
 </dict>

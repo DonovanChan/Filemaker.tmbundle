@@ -5,11 +5,11 @@
 	<key>content</key>
 	<string>Get ( LastError )</string>
 	<key>name</key>
-	<string>Get ( LastError )</string>
+	<string>LastError</string>
 	<key>scope</key>
 	<string>source.filemaker</string>
 	<key>tabTrigger</key>
-	<string>getle</string>
+	<string>get</string>
 	<key>uuid</key>
 	<string>D4D71935-B748-492D-96E3-695C068169BF</string>
 </dict>

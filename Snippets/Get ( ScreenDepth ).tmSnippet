@@ -5,11 +5,11 @@
 	<key>content</key>
 	<string>Get ( ScreenDepth )</string>
 	<key>name</key>
-	<string>Get ( ScreenDepth )</string>
+	<string>ScreenDepth</string>
 	<key>scope</key>
 	<string>source.filemaker</string>
 	<key>tabTrigger</key>
-	<string>getsd</string>
+	<string>get</string>
 	<key>uuid</key>
 	<string>80F91279-D85F-4B5B-9EFF-D8110F8189B2</string>
 </dict>

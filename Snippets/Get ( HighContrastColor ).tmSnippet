@@ -5,11 +5,11 @@
 	<key>content</key>
 	<string>Get ( HighContrastColor )</string>
 	<key>name</key>
-	<string>Get ( HighContrastColor )</string>
+	<string>HighContrastColor</string>
 	<key>scope</key>
 	<string>source.filemaker</string>
 	<key>tabTrigger</key>
-	<string>gethcc</string>
+	<string>get</string>
 	<key>uuid</key>
 	<string>338FD146-C304-424A-B7DF-8A08DA57270F</string>
 </dict>

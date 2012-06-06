@@ -5,11 +5,11 @@
 	<key>content</key>
 	<string>Get ( RecordID )</string>
 	<key>name</key>
-	<string>Get ( RecordID )</string>
+	<string>RecordID</string>
 	<key>scope</key>
 	<string>source.filemaker</string>
 	<key>tabTrigger</key>
-	<string>getri</string>
+	<string>get</string>
 	<key>uuid</key>
 	<string>14334C02-4EE4-4D45-B4FC-79EE5977A22F</string>
 </dict>

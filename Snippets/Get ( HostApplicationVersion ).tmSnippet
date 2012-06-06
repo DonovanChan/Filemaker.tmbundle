@@ -5,11 +5,11 @@
 	<key>content</key>
 	<string>Get ( HostApplicationVersion )</string>
 	<key>name</key>
-	<string>Get ( HostApplicationVersion )</string>
+	<string>HostApplicationVersion</string>
 	<key>scope</key>
 	<string>source.filemaker</string>
 	<key>tabTrigger</key>
-	<string>gethav</string>
+	<string>get</string>
 	<key>uuid</key>
 	<string>175C62A1-6CBC-4ABA-A283-0E0F9FE46172</string>
 </dict>

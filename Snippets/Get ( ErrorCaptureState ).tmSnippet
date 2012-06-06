@@ -5,11 +5,11 @@
 	<key>content</key>
 	<string>Get ( ErrorCaptureState )</string>
 	<key>name</key>
-	<string>Get ( ErrorCaptureState )</string>
+	<string>ErrorCaptureState</string>
 	<key>scope</key>
 	<string>source.filemaker</string>
 	<key>tabTrigger</key>
-	<string>getecs</string>
+	<string>get</string>
 	<key>uuid</key>
 	<string>91044C93-C427-4B33-B5FC-6CA65BDAFF58</string>
 </dict>

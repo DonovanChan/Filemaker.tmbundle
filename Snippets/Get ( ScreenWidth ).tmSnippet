@@ -5,11 +5,11 @@
 	<key>content</key>
 	<string>Get ( ScreenWidth )</string>
 	<key>name</key>
-	<string>Get ( ScreenWidth )</string>
+	<string>ScreenWidth</string>
 	<key>scope</key>
 	<string>source.filemaker</string>
 	<key>tabTrigger</key>
-	<string>getsw</string>
+	<string>get</string>
 	<key>uuid</key>
 	<string>7AA7D4A7-78D6-43C3-A2FD-3C1C9D2F5CC4</string>
 </dict>

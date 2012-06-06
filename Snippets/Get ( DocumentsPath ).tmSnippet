@@ -5,11 +5,11 @@
 	<key>content</key>
 	<string>Get ( DocumentsPath )</string>
 	<key>name</key>
-	<string>Get ( DocumentsPath )</string>
+	<string>DocumentsPath</string>
 	<key>scope</key>
 	<string>source.filemaker</string>
 	<key>tabTrigger</key>
-	<string>getdocpath</string>
+	<string>get</string>
 	<key>uuid</key>
 	<string>12D1E2F4-8D71-4849-B089-FBCC724B46BB</string>
 </dict>

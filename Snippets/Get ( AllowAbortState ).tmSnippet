@@ -5,11 +5,11 @@
 	<key>content</key>
 	<string>Get ( AllowAbortState )</string>
 	<key>name</key>
-	<string>Get ( AllowAbortState )</string>
+	<string>AllowAbortState</string>
 	<key>scope</key>
 	<string>source.filemaker</string>
 	<key>tabTrigger</key>
-	<string>getaab</string>
+	<string>get</string>
 	<key>uuid</key>
 	<string>84FA2C50-6AD5-459C-BF8E-97C3B2A6F95B</string>
 </dict>

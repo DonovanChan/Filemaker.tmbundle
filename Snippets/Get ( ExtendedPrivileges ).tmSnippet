@@ -5,11 +5,11 @@
 	<key>content</key>
 	<string>Get ( ExtendedPrivileges )</string>
 	<key>name</key>
-	<string>Get ( ExtendedPrivileges )</string>
+	<string>ExtendedPrivileges</string>
 	<key>scope</key>
 	<string>source.filemaker</string>
 	<key>tabTrigger</key>
-	<string>getep</string>
+	<string>get</string>
 	<key>uuid</key>
 	<string>677BA195-9CCD-4B60-A866-26E644F881EF</string>
 </dict>

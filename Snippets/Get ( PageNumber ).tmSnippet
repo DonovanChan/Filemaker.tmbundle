@@ -5,11 +5,11 @@
 	<key>content</key>
 	<string>Get ( PageNumber )</string>
 	<key>name</key>
-	<string>Get ( PageNumber )</string>
+	<string>PageNumber</string>
 	<key>scope</key>
 	<string>source.filemaker</string>
 	<key>tabTrigger</key>
-	<string>getpn</string>
+	<string>get</string>
 	<key>uuid</key>
 	<string>A216A8C9-E633-4FAF-A2C9-536E48158494</string>
 </dict>

@@ -5,11 +5,11 @@
 	<key>content</key>
 	<string>Get ( AccountName )</string>
 	<key>name</key>
-	<string>Get ( AccountName )</string>
+	<string>AccountName</string>
 	<key>scope</key>
 	<string>source.filemaker</string>
 	<key>tabTrigger</key>
-	<string>getan</string>
+	<string>get</string>
 	<key>uuid</key>
 	<string>B6AC2B0F-2F4F-4233-AB95-8FE4142E350F</string>
 </dict>

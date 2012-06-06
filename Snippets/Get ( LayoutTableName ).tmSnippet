@@ -5,11 +5,11 @@
 	<key>content</key>
 	<string>Get ( LayoutTableName )</string>
 	<key>name</key>
-	<string>Get ( LayoutTableName )</string>
+	<string>LayoutTableName</string>
 	<key>scope</key>
 	<string>source.filemaker</string>
 	<key>tabTrigger</key>
-	<string>getltn</string>
+	<string>get</string>
 	<key>uuid</key>
 	<string>312B21D0-D1B7-4275-AA1C-480FDAF74F88</string>
 </dict>

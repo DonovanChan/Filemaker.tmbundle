@@ -5,11 +5,11 @@
 	<key>content</key>
 	<string>Get ( RequestCount )</string>
 	<key>name</key>
-	<string>Get ( RequestCount )</string>
+	<string>RequestCount</string>
 	<key>scope</key>
 	<string>source.filemaker</string>
 	<key>tabTrigger</key>
-	<string>getrc</string>
+	<string>get</string>
 	<key>uuid</key>
 	<string>848A508B-E29C-4264-A600-6394236C7AA1</string>
 </dict>

@@ -5,11 +5,11 @@
 	<key>content</key>
 	<string>Get ( RecordAccess )</string>
 	<key>name</key>
-	<string>Get ( RecordAccess )</string>
+	<string>RecordAccess</string>
 	<key>scope</key>
 	<string>source.filemaker</string>
 	<key>tabTrigger</key>
-	<string>getra</string>
+	<string>get</string>
 	<key>uuid</key>
 	<string>484621F3-AAAC-4561-973C-3153645818B3</string>
 </dict>

@@ -5,11 +5,11 @@
 	<key>content</key>
 	<string>Get ( LastODBCError )</string>
 	<key>name</key>
-	<string>Get ( LastODBCError )</string>
+	<string>LastODBCError</string>
 	<key>scope</key>
 	<string>source.filemaker</string>
 	<key>tabTrigger</key>
-	<string>getlodbc</string>
+	<string>get</string>
 	<key>uuid</key>
 	<string>49390B31-3CDF-4748-8791-0A8006BA99C6</string>
 </dict>

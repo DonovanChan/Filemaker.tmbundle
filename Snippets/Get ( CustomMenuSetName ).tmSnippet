@@ -5,11 +5,11 @@
 	<key>content</key>
 	<string>Get ( CustomMenuSetName )</string>
 	<key>name</key>
-	<string>Get ( CustomMenuSetName )</string>
+	<string>CustomMenuSetName</string>
 	<key>scope</key>
 	<string>source.filemaker</string>
 	<key>tabTrigger</key>
-	<string>getcmsn</string>
+	<string>get</string>
 	<key>uuid</key>
 	<string>DF1BA479-DA21-4E08-95EE-2776029FEA2E</string>
 </dict>

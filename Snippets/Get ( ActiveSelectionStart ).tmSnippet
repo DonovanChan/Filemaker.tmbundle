@@ -5,11 +5,11 @@
 	<key>content</key>
 	<string>Get ( ActiveSelectionStart )</string>
 	<key>name</key>
-	<string>Get ( ActiveSelectionStart )</string>
+	<string>ActiveSelectionStart</string>
 	<key>scope</key>
 	<string>source.filemaker</string>
 	<key>tabTrigger</key>
-	<string>getasstart</string>
+	<string>get</string>
 	<key>uuid</key>
 	<string>26E51B71-8FFF-4907-AC9A-548A40D52895</string>
 </dict>

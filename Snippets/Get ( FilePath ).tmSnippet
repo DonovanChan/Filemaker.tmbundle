@@ -5,11 +5,11 @@
 	<key>content</key>
 	<string>Get ( FilePath )</string>
 	<key>name</key>
-	<string>Get ( FilePath )</string>
+	<string>FilePath</string>
 	<key>scope</key>
 	<string>source.filemaker</string>
 	<key>tabTrigger</key>
-	<string>getfp</string>
+	<string>get</string>
 	<key>uuid</key>
 	<string>E01D14F3-8A53-4CED-92E8-C693B65EE43F</string>
 </dict>

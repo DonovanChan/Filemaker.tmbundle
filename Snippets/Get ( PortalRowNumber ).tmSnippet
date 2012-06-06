@@ -5,11 +5,11 @@
 	<key>content</key>
 	<string>Get ( PortalRowNumber )</string>
 	<key>name</key>
-	<string>Get ( PortalRowNumber )</string>
+	<string>PortalRowNumber</string>
 	<key>scope</key>
 	<string>source.filemaker</string>
 	<key>tabTrigger</key>
-	<string>getprn</string>
+	<string>get</string>
 	<key>uuid</key>
 	<string>396EDCEC-86C2-4FFB-A61E-1FFDEF7D93E1</string>
 </dict>

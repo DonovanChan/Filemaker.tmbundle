@@ -5,11 +5,11 @@
 	<key>content</key>
 	<string>Get ( MultiUserState )</string>
 	<key>name</key>
-	<string>Get ( MultiUserState )</string>
+	<string>MultiUserState</string>
 	<key>scope</key>
 	<string>source.filemaker</string>
 	<key>tabTrigger</key>
-	<string>getmus</string>
+	<string>get</string>
 	<key>uuid</key>
 	<string>B80CFA2B-F124-45B7-B493-B4D4AB969E58</string>
 </dict>

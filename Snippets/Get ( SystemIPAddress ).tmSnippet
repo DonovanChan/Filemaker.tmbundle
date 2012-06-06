@@ -5,11 +5,11 @@
 	<key>content</key>
 	<string>Get ( SystemIPAddress )</string>
 	<key>name</key>
-	<string>Get ( SystemIPAddress )</string>
+	<string>SystemIPAddress</string>
 	<key>scope</key>
 	<string>source.filemaker</string>
 	<key>tabTrigger</key>
-	<string>getsysip</string>
+	<string>get</string>
 	<key>uuid</key>
 	<string>5FA20608-87DD-4160-A21F-C9620B406035</string>
 </dict>

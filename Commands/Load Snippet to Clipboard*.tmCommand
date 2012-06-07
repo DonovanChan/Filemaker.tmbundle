@@ -26,7 +26,14 @@ if text.empty?
 	exit_show_html(Commands.documentation(command).to_html)
 end
 
-puts Commands.call(command,text)</string>
+result = Commands.call(command,text)
+
+if result.count("\n\r") &gt; 10
+	exit_create_new_document(result)
+	exit
+else
+	puts result
+end</string>
 	<key>input</key>
 	<string>selection</string>
 	<key>keyEquivalent</key>

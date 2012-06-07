@@ -615,7 +615,7 @@ command :array_to_layout_field_grid do |paramArray|
       }
       doc.layoutFieldGrid(options)
     end
-    doc
+    doc.to_xml
   rescue => e
     return_error(e)
   end

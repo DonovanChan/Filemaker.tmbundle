@@ -31,12 +31,12 @@ class FileMaker::Snippet
   
   require 'erb'
   require 'rexml/document'
-  path_children = "#{PATH_BASE}/snippet"
-  require "#{path_children}/snippet_calc.rb"
-  require "#{path_children}/snippet_layout.rb"
-  require "#{path_children}/snippet_schema.rb"
-  require "#{path_children}/snippet_script.rb"
-  require "#{path_children}/snippet_pre12.rb"
+  path_children = "#{PATH_BASE}/fmsnippet"
+  require "#{path_children}/fmsnippet_calc.rb"
+  require "#{path_children}/fmsnippet_layout.rb"
+  require "#{path_children}/fmsnippet_schema.rb"
+  require "#{path_children}/fmsnippet_script.rb"
+  require "#{path_children}/fmsnippet_pre12.rb"
 
   attr_accessor :type, :text
 

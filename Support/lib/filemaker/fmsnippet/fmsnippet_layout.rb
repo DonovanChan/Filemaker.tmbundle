@@ -48,10 +48,14 @@ class FileMaker::Snippet
   # @option options [String] :objectName
   # @option options [Integer] :fieldHeight
   # @option options [Integer] :fieldWidth
-  # @option options [Integer] :verticalSpacing
-  # @return [String] XML element generated for object
+  # @option options [Integer] :fieldTop If left empty, will increment on its own. Provide value of 0 when field will be contained in parent object.
+  # @option options [Integer] :fieldLeft
+  # @option options [Integer] :marginTop Space between bottom of previous field to top of current field being generated.
+  # @option options [String] :script
+  # @option options [String] :scriptParameter
+  # @return [String] XML element generated for object. Also updates @boundTop and @boundBottom, which store absolute position value of most recently generated field.
   def layoutField(options={})
-    @boundTop = 0 if @boundTop.nil?
+    self.set_type('LayoutObjectList')
     fieldQualified = options[:fieldQualified]
     if fieldQualified
       table = FileMaker::Calc.field_table(fieldQualified)
@@ -64,15 +68,26 @@ class FileMaker::Snippet
     options = {
       :font         => "Verdana",
       :fontSize     => 12,
-      :fieldWidth   => 120
+      :fieldWidth   => 120,
+      :fieldLeft    => 0
     }.merge(options.delete_blank)
     options[:fieldHeight] ||= options[:fontSize].to_i + 10
-    fieldLeft = 10
-    verticalSpacing = options[:verticalSpacing] || options[:fieldHeight] + 2
-    @boundTop += verticalSpacing
+    options[:marginTop] ||= 2
+    
+    # Absolute measurements
+    @boundTop = @boundBottom.nil? ? 0 : @boundBottom.to_i + options[:marginTop].to_i
+    @boundBottom = @boundTop + options[:fieldHeight].to_i
+    
+    # Relative measurements (used when contained by parent object)
+    if options[:fieldTop].nil?
+      options[:fieldTop] = @boundTop
+      fieldBottom = @boundBottom
+    else
+      fieldBottom = options[:fieldTop].to_i + options[:fieldHeight].to_i
+    end
     template = %q{
   		<Object type="Field" key="" LabelKey="" name="<%= options[:objectName] %>" flags="" rotation="0">
-  			<Bounds top="<%= @boundTop %>" left="<%= fieldLeft %>" bottom="<%= @boundTop + options[:fieldHeight].to_i %>" right="<%= fieldLeft.to_i + options[:fieldWidth].to_i %>"/>
+  			<Bounds top="<%= options[:fieldTop] %>" left="<%= options[:fieldLeft] %>" bottom="<%= fieldBottom %>" right="<%= options[:fieldLeft].to_i + options[:fieldWidth].to_i %>"/>
   			<FieldObj numOfReps="1" flags="" inputMode="0" displayType="0" quickFind="1" pictFormat="5">
   				<Name><%= fieldQualified %></Name>
   				<Styles>
@@ -86,8 +101,9 @@ class FileMaker::Snippet
   			</FieldObj>
   		</Object>}.gsub(/^\s*%/, '%')
     tpl = ERB.new(template, 0, '%<>')
-    @text << tpl.result(binding)
-    {:top => @boundTop, :left => fieldLeft}
+    xml = tpl.result(binding)
+    @text << xml
+    xml
   end
   
   # Constructs layout field object with label and appends to @text
@@ -112,7 +128,9 @@ class FileMaker::Snippet
   # @option options [Integer] :rightMargin Padding of text inside of object
   # @option options [String] :textColor Hex value of text color
   # @option options [Integer] :width
+  # @return [String] XML element generated for object.
   def layoutText(text,options={})
+    self.set_type('LayoutObjectList')
     return nil unless text
     options = {
       :font         => "Verdana",
@@ -151,7 +169,86 @@ class FileMaker::Snippet
       </Object>
     }.gsub(/^\s*%/, '%')
     tpl = ERB.new(template, 0, '%<>')
-    @text << tpl.result(binding)
+    xml = tpl.result(binding)
+    @text << xml
+    xml
+  end
+  
+  # Constructs layout field object with label and assigns script to field. Appends resulting XML to @text.
+  # @option (see #layoutField)
+  # @option options [String] :scriptID FileMaker's internal ID for script. You'll need to get this off of the clipboard.
+  # @option options [String] :scriptParam FileMaker calculation
+  # @return [String] XML element generated for object.
+  def layoutFieldButton(options={})
+    self.set_type('LayoutObjectList')
+
+    options[:fieldHeight] ||= options[:fontSize].to_i + 10
+    options = {
+      :fieldWidth   => 120,
+      :fieldLeft    => 0,
+      :marginTop    => -1
+    }.merge(options.delete_blank)
+    fieldOptions = options.merge({ :fieldTop => 0, :fieldLeft => 0 })
+    
+    # Prevent field from getting added to @text (I know, this is ugly)
+    textOrig = @text.dup
+    field = self.layoutField(fieldOptions)
+    @text = textOrig
+    
+    if options[:fieldTop].nil?
+      fieldBottom = @boundBottom
+    else
+      fieldBottom = options[:fieldTop].to_i + options[:fieldHeight].to_i
+    end
+    
+    template = %q{
+  		<Object type="GroupButton" key="" LabelKey="0" flags="" rotation="0">
+  			<Bounds top="<%= options[:fieldTop] || @boundTop %>" left="<%= options[:fieldLeft] %>" bottom="<%= fieldBottom %>" right="<%= options[:fieldLeft].to_i + options[:fieldWidth].to_i %>"/>
+  			<GroupButtonObj numOfObjs="1">
+  				<Step enable="True" id="" name="Perform Script">
+  					<CurrentScript value="Pause"/>
+  					<Calculation><![CDATA[<%= options[:scriptParam] %>]]></Calculation>
+  					<Script id="<%= options[:scriptID] %>" name="<%= options[:scriptName] %>"/>
+  				</Step>
+          <%= field.gsub(/^/,"\t"*2) %>
+        </GroupButtonObj>
+      </Object>}.gsub(/^\s*%/, '%')
+    tpl = ERB.new(template, 0, '%<>')
+    xml = tpl.result(binding)
+    @text << xml
+    xml
+  end
+    
+  # Constructs layout field object with label and assigns script to field. Appends resulting XML to @text.
+  # @option (see #layoutFieldButton)
+  # @option options [Integer] :rowCount Number of rows to generate
+  # @option options [Integer] :colCount Number of columns to generate
+  # @option options [Integer] :marginTop Distance between top border of current field and bottom of field above it
+  # @option options [Integer] :marginLeft Distance between left border of current field and right of adjacent field
+  # @return [String] XML element generated for object.
+  def layoutFieldGrid(options={})
+    colWidth = options[:fieldWidth].to_i + options[:marginLeft].to_i
+    rowHeight = options[:fieldHeight].to_i + options[:marginTop].to_i
+
+    rep = options[:repStart].to_i || 1
+    repMax = rep + options[:rowCount].to_i * options[:colCount].to_i - 1
+    while rep <= repMax
+      # puts eval(%Q["#{options[:scriptParam]}"])
+      col = (rep.to_f / options[:rowCount].to_i).ceil
+      row = rep % options[:rowCount].to_i
+      row = rep/col if row == 0
+      opt = options.dup.merge({
+        :fieldQualified => options[:fieldQualified] + "[#{rep}]",
+        :scriptParam    => eval(%Q[%Q[#{options[:scriptParam]}]]),
+        :fieldLeft      => (col-1) * colWidth,
+        :fieldTop       => (row-1) * rowHeight || 0,
+        :tooltip        => eval(%Q[%Q[#{options[:tooltip]}]]),
+        :objectName     => eval(%Q[[#{options[:objectName]}]])
+      })
+      self.layoutFieldButton(opt)
+      rep += 1
+    end
+    self.to_xml
   end
     
 end

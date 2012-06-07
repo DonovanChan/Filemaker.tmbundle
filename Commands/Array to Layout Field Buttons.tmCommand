@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>#!/usr/bin/ruby
+#
+# DESCRIPTION
+#	Generates FileMaker snippet of field layout objects
+#
+# USAGE
+#	Instructions printed when input is empty.
+#
+
+load ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_COMMANDS']
+$LOAD_PATH &lt;&lt; "#{ENV['TM_SUPPORT_PATH']}/lib"
+require 'exit_codes.rb'
+include TextMate
+
+text = STDIN.read
+command = :array_to_layout_field_buttons
+
+if text.empty?
+	exit_show_html(Commands.documentation(command).to_html)
+end
+
+print Commands.call(command,text)</string>
+	<key>input</key>
+	<string>selection</string>
+	<key>name</key>
+	<string>Array to Layout Field Buttons</string>
+	<key>output</key>
+	<string>replaceSelectedText</string>
+	<key>uuid</key>
+	<string>7C48AD96-790E-40B4-A4E3-1F5F2A25A010</string>
+</dict>
+</plist>

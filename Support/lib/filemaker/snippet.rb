@@ -52,11 +52,11 @@ class FileMaker::Snippet
   # @return [true] Currently performs no error handling
   def set_type(type='')
     case @text
-    when /\<Step\b/u
-      @type = 'FMObjectList'
     when /\<Layout\b/, /\<ObjectStyle\b/, /\<LocalCSS\b/, type == 'LayoutObjectList'
       @type = 'LayoutObjectList'
       @boundTop = 0
+    when /\<Step\b/
+      @type = 'FMObjectList'
     else
       @type = 'FMObjectList'
     end

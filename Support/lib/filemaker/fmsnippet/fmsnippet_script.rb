@@ -34,9 +34,9 @@ class FileMaker::Snippet
   # @return [String] XML element generated for script step
   def stepComment(text=" ")
     template = %q{
-  <Step enable="True" id="" name="Comment">
-    <Text><%= text %></Text>
-  </Step>
+	<Step enable="True" id="" name="Comment">
+		<Text><%= text %></Text>
+	</Step>
 }.gsub(/^\s*%/, '%')
     tpl = ERB.new(template, 0, '%<>')
     @text << tpl.result(binding)
@@ -47,14 +47,14 @@ class FileMaker::Snippet
   # @return [String] XML element generated for script step
   def stepCommentHeader(text=" ")
     template = %q{
-  <Step enable="True" id="" name="Comment"/>
-  <Step enable="True" id="" name="Comment">
-    <Text>__________________________________________________</Text>
-  </Step>
-  <Step enable="True" id="" name="Comment">
-    <Text><%= text %></Text>
-  </Step>
-  <Step enable="True" id="" name="Comment"/>
+	<Step enable="True" id="" name="Comment"/>
+	<Step enable="True" id="" name="Comment">
+		<Text>__________________________________________________</Text>
+	</Step>
+	<Step enable="True" id="" name="Comment">
+		<Text><%= text %></Text>
+	</Step>
+	<Step enable="True" id="" name="Comment"/>
 }.gsub(/^\s*%/, '%')
     tpl = ERB.new(template, 0, '%<>')
     @text << tpl.result(binding)
@@ -65,9 +65,9 @@ class FileMaker::Snippet
   # @return [String] XML element generated for script step
   def stepIf(calculation)
     template = %q{
-  <Step enable="True" id="" name="If">
-    <Calculation><![CDATA[<%= calculation %>]]></Calculation>
-  </Step>}.gsub(/^\s*%/, '%')
+	<Step enable="True" id="" name="If">
+		<Calculation><![CDATA[<%= calculation %>]]></Calculation>
+	</Step>}.gsub(/^\s*%/, '%')
     tpl = ERB.new(template, 0, '%<>')
     @text << tpl.result(binding)
   end
@@ -77,9 +77,9 @@ class FileMaker::Snippet
   # @return [String] XML element generated for script step
   def stepElseIf(calculation)
     template = %q{
-  <Step enable="True" id="" name="Else If">
-    <Calculation><![CDATA[<%= calculation %>]]></Calculation>
-  </Step>}.gsub(/^\s*%/, '%')
+	<Step enable="True" id="" name="Else If">
+		<Calculation><![CDATA[<%= calculation %>]]></Calculation>
+	</Step>}.gsub(/^\s*%/, '%')
     tpl = ERB.new(template, 0, '%<>')
     @text << tpl.result(binding)
   end
@@ -105,9 +105,9 @@ class FileMaker::Snippet
   # @return [String] XML element generated for script step
   def stepExitScript(calculation)
     template = %q{
-  <Step enable="True" id="" name="Exit Script">
-    <Calculation><![CDATA[<%= calculation %>]]></Calculation>
-  </Step>}.gsub(/^\s*%/, '%')
+	<Step enable="True" id="" name="Exit Script">
+		<Calculation><![CDATA[<%= calculation %>]]></Calculation>
+	</Step>}.gsub(/^\s*%/, '%')
     tpl = ERB.new(template, 0, '%<>')
     @text << tpl.result(binding)
   end
@@ -117,9 +117,9 @@ class FileMaker::Snippet
   # @return [String] XML element generated for script step
   def stepExitLoopIf(calculation)
     template = %q{
-  <Step enable="True" id="" name="Exit Loop If">
-    <Calculation><![CDATA[<%= calculation %>]]></Calculation>
-  </Step>}.gsub(/^\s*%/, '%')
+	<Step enable="True" id="" name="Exit Loop If">
+		<Calculation><![CDATA[<%= calculation %>]]></Calculation>
+	</Step>}.gsub(/^\s*%/, '%')
     tpl = ERB.new(template, 0, '%<>')
     @text << tpl.result(binding)
   end
@@ -143,15 +143,15 @@ class FileMaker::Snippet
     repCalc = repetition.class == Fixnum ? nil : repetition
     rep = repCalc ? 0 : repetition
     template = %q{
-  <Step enable="True" id="" name="Set Field">
-    <Calculation><![CDATA[<%= options[:calculation] %>]]></Calculation>
-    <Field table="<%= table %>" id="" repetition="<%= rep %>" name="<%= field %>"></Field>
-    % if repCalc
-    <Repetition>
-     <Calculation><![CDATA[<%= repCalc %>]]></Calculation>
-    </Repetition>
-    % end
-  </Step>}.gsub(/^\s*%/, '%')
+	<Step enable="True" id="" name="Set Field">
+		<Calculation><![CDATA[<%= options[:calculation] %>]]></Calculation>
+		<Field table="<%= table %>" id="" repetition="<%= rep %>" name="<%= field %>"></Field>
+		% if repCalc
+		<Repetition>
+		 <Calculation><![CDATA[<%= repCalc %>]]></Calculation>
+		</Repetition>
+		% end
+	</Step>}.gsub(/^\s*%/, '%')
     tpl = ERB.new(template, 0, '%<>')
     @text << tpl.result(binding)
   end
@@ -163,17 +163,17 @@ class FileMaker::Snippet
   # @return [String] XML element generated for script step
   def stepSetVariable(name,rep,calc)
     template = %q{
-  <Step enable="True" id="" name="Set Variable">
-    <Value>
-      <Calculation><![CDATA[<%= calc %>]]></Calculation>
-    </Value>
-      % unless rep == 1 || nil
-    <Repetition>
-      <Calculation><![CDATA[<%= rep %>]]></Calculation>
-    </Repetition>
-      % end
-    <Name><%= name %></Name>
-  </Step>}.gsub(/^\s*%/, '%')
+	<Step enable="True" id="" name="Set Variable">
+		<Value>
+			<Calculation><![CDATA[<%= calc %>]]></Calculation>
+		</Value>
+			% unless rep == 1 || nil
+		<Repetition>
+			<Calculation><![CDATA[<%= rep %>]]></Calculation>
+		</Repetition>
+			% end
+		<Name><%= name %></Name>
+	</Step>}.gsub(/^\s*%/, '%')
     tpl = ERB.new(template, 0, '%<>')
     @text << tpl.result(binding)
   end
@@ -189,23 +189,23 @@ class FileMaker::Snippet
   # @return [String] XML element generated for script step
   def stepSort(fieldArray,hideDialog=true)
     template = %q{
-  <Step enable="True" id="" name="Sort Records">
-    <NoInteract state="<%= Boolean(hideDialog).to_s.capitalize %>"/>
-    <Restore state="True"/>
-    <SortList value="True">
-      % fieldArray.each do |field_cur|
-        % direction = field_cur[:direction] || "Ascending"
-        % fieldQualified = field_cur[:field]
-        % table = FileMaker::Calc.field_table(fieldQualified)
-        % name = FileMaker::Calc.field_name(fieldQualified)
-        <Sort type="<%= direction.capitalize %>">
-          <PrimaryField>
-            <Field table="<%= table %>" id="" name="<%= name %>"/>
-          </PrimaryField>
-        </Sort>
-      % end
-    </SortList>
-  </Step>}.gsub(/^\s*%/, '%')
+	<Step enable="True" id="" name="Sort Records">
+		<NoInteract state="<%= Boolean(hideDialog).to_s.capitalize %>"/>
+		<Restore state="True"/>
+		<SortList value="True">
+			% fieldArray.each do |field_cur|
+				% direction = field_cur[:direction] || "Ascending"
+				% fieldQualified = field_cur[:field]
+				% table = FileMaker::Calc.field_table(fieldQualified)
+				% name = FileMaker::Calc.field_name(fieldQualified)
+				<Sort type="<%= direction.capitalize %>">
+					<PrimaryField>
+						<Field table="<%= table %>" id="" name="<%= name %>"/>
+					</PrimaryField>
+				</Sort>
+			% end
+		</SortList>
+	</Step>}.gsub(/^\s*%/, '%')
     tpl = ERB.new(template, 0, '%<>')
     @text << tpl.result(binding)
   end

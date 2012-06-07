@@ -71,27 +71,27 @@ class FileMaker::Snippet::Pre12
     verticalSpacing = options[:verticalSpacing] || options[:fieldHeight] + 2
     @boundTop += verticalSpacing
     template = %q{
-    <ObjectStyle id="0" fontHeight="<%= options[:fontSize].to_i + 3 %>" graphicFormat="5" fieldBorders="0">
-      <CharacterStyle mask="">
-        <Font-family codeSet="" fontId=""><%= options[:font] %></Font-family>
-        <Font-size><%= options[:fontSize] %></Font-size>
-        <Face>0</Face>
-        <Color>#000000</Color>
-      </CharacterStyle>
-    </ObjectStyle>
-    <Object type="Field" name="<%= options[:objectName] %>" flags="0" portal="-1" rotation="0">
-      <StyleId>0</StyleId>
-      <Bounds top="<%= @boundTop %>" left="<%= fieldLeft %>" bottom="<%= @boundTop + options[:fieldHeight].to_i %>" right="<%= fieldLeft.to_i + options[:fieldWidth].to_i %>"/>
-      <ToolTip>
-        <Calculation><![CDATA[<%= options[:tooltip] %>]]></Calculation>
-      </ToolTip>
-      <FieldObj numOfReps="1" flags="" inputMode="0" displayType="0" quickFind="0">
-        <Name><%= fieldQualified %></Name>
-        <DDRInfo>
-          <Field name="<%= field %>" id="1" repetition="1" maxRepetition="1" table="<%= table %>"/>
-        </DDRInfo>
-      </FieldObj>
-    </Object>}.gsub(/^\s*%/, '%')
+		<ObjectStyle id="0" fontHeight="<%= options[:fontSize].to_i + 3 %>" graphicFormat="5" fieldBorders="0">
+			<CharacterStyle mask="">
+				<Font-family codeSet="" fontId=""><%= options[:font] %></Font-family>
+				<Font-size><%= options[:fontSize] %></Font-size>
+				<Face>0</Face>
+				<Color>#000000</Color>
+			</CharacterStyle>
+		</ObjectStyle>
+		<Object type="Field" name="<%= options[:objectName] %>" flags="0" portal="-1" rotation="0">
+			<StyleId>0</StyleId>
+			<Bounds top="<%= @boundTop %>" left="<%= fieldLeft %>" bottom="<%= @boundTop + options[:fieldHeight].to_i %>" right="<%= fieldLeft.to_i + options[:fieldWidth].to_i %>"/>
+			<ToolTip>
+				<Calculation><![CDATA[<%= options[:tooltip] %>]]></Calculation>
+			</ToolTip>
+			<FieldObj numOfReps="1" flags="" inputMode="0" displayType="0" quickFind="0">
+				<Name><%= fieldQualified %></Name>
+				<DDRInfo>
+					<Field name="<%= field %>" id="1" repetition="1" maxRepetition="1" table="<%= table %>"/>
+				</DDRInfo>
+			</FieldObj>
+		</Object>}.gsub(/^\s*%/, '%')
     tpl = ERB.new(template, 0, '%<>')
     @text << tpl.result(binding)
     {:top => @boundTop, :left => fieldLeft}
@@ -130,36 +130,36 @@ class FileMaker::Snippet::Pre12
     }.merge(options.delete_blank)
     options[:height] ||= options[:fontSize].to_i + 6
     template = %q{
-  <ObjectStyle id="0" fontHeight="" graphicFormat="" fieldBorders="">
-    <CharacterStyle mask="">
-      <Font-family codeSet="" fontId=""><%= options[:font] %></Font-family>
-      <Font-size><%= options[:fontSize] %></Font-size>
-      <Face></Face>
-      <Color><%= options[:textColor] %></Color>
-    </CharacterStyle>
-    <ParagraphStyle mask="">
-      <%= "<LeftMargin>#{options[:leftMargin].to_i}</LeftMargin>" if options[:leftMargin] %>
-      <%= "<RightMargin>#{options[:RightMargin].to_i}</RightMargin>" if options[:RightMargin] %>
-      <Justification><%= options[:justification] %></Justification>
-    </ParagraphStyle>
-  </ObjectStyle>
-  <Object type="Text" flags="0" portal="-1" rotation="0">
-    <StyleId>0</StyleId>
-    <Bounds top="<%= options[:top].to_i %>" left="<%= options[:left].to_i %>" bottom="<%= options[:top].to_i + options[:height].to_i %>" right="<%= options[:left].to_i + options[:width].to_i %>"/>
-    <TextObj flags="0">
-      <CharacterStyleVector>
-        <Style>
-          <Data><%= text %></Data>
-          <CharacterStyle mask="">
-            <Font-family codeSet="" fontId=""><%= options[:font] %></Font-family>
-            <Font-size><%= options[:fontSize] %></Font-size>
-            <Face></Face>
-            <Color><%= options[:textColor] %></Color>
-          </CharacterStyle>
-        </Style>
-      </CharacterStyleVector>
-    </TextObj>
-  </Object>
+	<ObjectStyle id="0" fontHeight="" graphicFormat="" fieldBorders="">
+		<CharacterStyle mask="">
+			<Font-family codeSet="" fontId=""><%= options[:font] %></Font-family>
+			<Font-size><%= options[:fontSize] %></Font-size>
+			<Face></Face>
+			<Color><%= options[:textColor] %></Color>
+		</CharacterStyle>
+		<ParagraphStyle mask="">
+			<%= "<LeftMargin>#{options[:leftMargin].to_i}</LeftMargin>" if options[:leftMargin] %>
+			<%= "<RightMargin>#{options[:RightMargin].to_i}</RightMargin>" if options[:RightMargin] %>
+			<Justification><%= options[:justification] %></Justification>
+		</ParagraphStyle>
+	</ObjectStyle>
+	<Object type="Text" flags="0" portal="-1" rotation="0">
+		<StyleId>0</StyleId>
+		<Bounds top="<%= options[:top].to_i %>" left="<%= options[:left].to_i %>" bottom="<%= options[:top].to_i + options[:height].to_i %>" right="<%= options[:left].to_i + options[:width].to_i %>"/>
+		<TextObj flags="0">
+			<CharacterStyleVector>
+				<Style>
+					<Data><%= text %></Data>
+					<CharacterStyle mask="">
+						<Font-family codeSet="" fontId=""><%= options[:font] %></Font-family>
+						<Font-size><%= options[:fontSize] %></Font-size>
+						<Face></Face>
+						<Color><%= options[:textColor] %></Color>
+					</CharacterStyle>
+				</Style>
+			</CharacterStyleVector>
+		</TextObj>
+	</Object>
     }.gsub(/^\s*%/, '%')
     tpl = ERB.new(template, 0, '%<>')
     @text << tpl.result(binding)

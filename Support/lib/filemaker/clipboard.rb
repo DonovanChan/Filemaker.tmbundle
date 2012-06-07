@@ -25,7 +25,7 @@ module FileMaker::Clipboard
   
   require 'open3'
   
-  # Defined in Snippet.rb
+  # Defined in fmsnippet.rb
   PATH_BASE = File.dirname(__FILE__)
   PATH_COPY = "#{PATH_BASE}/../GetSnippet.applescript"
   PATH_PASTE = "#{PATH_BASE}/../PasteSnippet.applescript"
@@ -86,9 +86,16 @@ module FileMaker::Clipboard
   # @return [String,nil] XML that was loaded to the clipboard. Returns nil in case of error.
   def self.set(object)
     text = self.escape_for_shell(object.to_xml)
-    shellScript = %Q[osascript "#{PATH_PASTE}" '#{text}']
+    # Use xargs -0 so we can provide long strings with single quotes and spaces
+    # osascript '-s o' option prints errors to stdout
+    shellScript = %Q[echo '#{text}'|xargs -0 osascript -s o "#{PATH_PASTE}"]
     result = `#{shellScript}`
-    raise ArgumentError, "Invalid/Unsupported string. Could be trouble with extended ascii character.\n#{result}" if result.start_with?('Error')
+    result.gsub!(/\r/,"\n") if result
+    if result.start_with?('Error validating XML')
+      raise ArgumentError, result
+    elsif result.start_with?('Error')
+      raise ArgumentError, "Invalid/Unsupported string. Could be trouble with extended ascii character.\n#{result}"
+    end
     return result
   end
   

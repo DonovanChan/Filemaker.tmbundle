@@ -5,12 +5,12 @@
 	<key>beforeRunningCommand</key>
 	<string>nop</string>
 	<key>command</key>
-	<string>#!/usr/bin/env ruby
+	<string>#!/usr/bin/ruby
 #
 # DESCRIPTION
-#	Loads XML to clipboard as FileMaker object
+#	Generates FileMaker snippet of grid of field layout objects
 #
-# NOTES
+# USAGE
 #	Instructions printed when input is empty.
 #
 
@@ -20,31 +20,20 @@ require 'exit_codes.rb'
 include TextMate
 
 text = STDIN.read
-command = :load_snippet
+command = :array_to_layout_field_grid
 
 if text.empty?
 	exit_show_html(Commands.documentation(command).to_html)
 end
 
-result = Commands.call(command,text)
-
-if result.count("\n\r") &gt; 10
-	exit_create_new_document(result)
-	exit
-else
-	puts result
-end</string>
+print Commands.call(command,text)</string>
 	<key>input</key>
 	<string>selection</string>
-	<key>keyEquivalent</key>
-	<string>@b</string>
 	<key>name</key>
-	<string>Load Snippet to Clipboard</string>
+	<string>Array to Layout Field Grid</string>
 	<key>output</key>
-	<string>showAsTooltip</string>
-	<key>scope</key>
-	<string>text.xml.filemakerClipboard</string>
+	<string>replaceSelectedText</string>
 	<key>uuid</key>
-	<string>9519435C-60DB-400F-853D-356CD98B214F</string>
+	<string>6A73E782-6E1B-4235-8673-129A5C434A03</string>
 </dict>
 </plist>

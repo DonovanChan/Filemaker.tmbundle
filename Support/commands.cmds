@@ -81,6 +81,9 @@ Loads XML from selection or current document onto clipboard as FileMaker object.
 	1. Ensure that the XML is valid. You can do this by running the Tidy command in the XML bundle (Ctl+Shift+H when in FileMaker Clipboard language).
 	2. Check for unusual characters that might cause encoding issues, like high-ascii characters.
 	3. Check that the snippet isn't missing any required elements or attributes. You're on your own with this one, but you can always copy an existing FileMaker object to compare the clipboard output.
+
+### Troubleshooting
+* If you get an error like "command not found: echo ..." it means that your snippet is too large. Try breaking it into smaller chunks and pasting each one separately.
 }
 command :load_snippet do |text|
   begin
@@ -89,10 +92,10 @@ command :load_snippet do |text|
     if result.nil?
     	"Unrecognized clipboard format.\nTry running Tidy command first."
     else
-    	"Snippet ready to paste into FileMaker"
+      "Snippet ready to paste into FileMaker" +
+      ("\nCommand result: #{result}" if FileMaker::DEBUG_ON)
     end
   rescue => e
-    # e.message + "\n" + e.backtrace.join("\n")
     return_error(e)
   end
 end

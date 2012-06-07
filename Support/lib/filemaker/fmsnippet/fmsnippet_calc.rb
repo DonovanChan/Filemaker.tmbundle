@@ -53,9 +53,9 @@ class FileMaker::Snippet
   #   Snippet.new.customFunction('TabDelimit','text;currentDelimiter','Substitute ( text ; currentDelimiter ; " " )' )
   def customFunction(name,params,calculation)
     template = %q{
-  <CustomFunction id="" functionArity="1" visible="True" parameters="<%= params %>" name="<%= name %>">
-    <Calculation><![CDATA[<%= calculation %>]]></Calculation>
-  </CustomFunction>}.gsub(/^\s*%/, '%')
+	<CustomFunction id="" functionArity="1" visible="True" parameters="<%= params %>" name="<%= name %>">
+		<Calculation><![CDATA[<%= calculation %>]]></Calculation>
+	</CustomFunction>}.gsub(/^\s*%/, '%')
     tpl = ERB.new(template, 0, '%<>')
     @text << tpl.result(binding)
   end

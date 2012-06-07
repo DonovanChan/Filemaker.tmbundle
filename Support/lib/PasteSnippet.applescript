@@ -12,6 +12,7 @@ HISTORY:
 	Created 2011.03.23 by Donovan Chandler, donovan_c@beezwax.net
 	Modified 2011.12.17 by Donovan Chandler: Converts placeholders for high ascii characters
 	Modified 2012.04.03 by Donovan Chandler: Added support for XML2 format (in FM 12)
+	Modified 2012.06.01 by Donovan Chandler: Reports errors from xmllint
 
 NOTES:
 	This script is intended to be called using a command from the shell like this: osascript PasteSnippet.applescript "$XML_TEXT"
@@ -41,12 +42,17 @@ on run argv
 	
 	------------------------------------------------
 	---- Escape single quotes for shell
+	----	Could possibly use xargs -0 for this, if it works with xmllint
 	set clipText to searchReplaceText(clipText, "'\\''", "'")
 	set clipText to searchReplaceText(clipText, "'", "'\\''")
 	
 	------------------------------------------------
 	---- Validate XML ----
-	set clipText to do shell script "echo '" & clipText & "' | xmllint -"
+	try
+		set clipText to do shell script "echo '" & clipText & "' | xmllint -"
+	on error errMsg number errNum
+		return "Error validating XML: " & errMsg
+	end
 	
 	---- Convert clip to proper class ----
 	set clipTextFormatted to convertClip(clipText, clipClass)

@@ -86,20 +86,23 @@ class FileMaker::Snippet
       fieldBottom = options[:fieldTop].to_i + options[:fieldHeight].to_i
     end
     template = %q{
-  		<Object type="Field" key="" LabelKey="" name="<%= options[:objectName] %>" flags="" rotation="0">
-  			<Bounds top="<%= options[:fieldTop] %>" left="<%= options[:fieldLeft] %>" bottom="<%= fieldBottom %>" right="<%= options[:fieldLeft].to_i + options[:fieldWidth].to_i %>"/>
-  			<FieldObj numOfReps="1" flags="" inputMode="0" displayType="0" quickFind="1" pictFormat="5">
-  				<Name><%= fieldQualified %></Name>
-  				<Styles>
-  					<LocalCSS>
-  					self {
-  						font-family: -fm-font-family(<%= options[:font] %>);
-  						font-size: <%= options[:fontSize] %>;
-  					}
-  					</LocalCSS>
-  				</Styles>
-  			</FieldObj>
-  		</Object>}.gsub(/^\s*%/, '%')
+		<Object type="Field" key="" LabelKey="" name="<%= options[:objectName] %>" flags="" rotation="0">
+			<Bounds top="<%= options[:fieldTop] %>" left="<%= options[:fieldLeft] %>" bottom="<%= fieldBottom %>" right="<%= options[:fieldLeft].to_i + options[:fieldWidth].to_i %>"/>
+			<% if options[:tooltip] %><ToolTip>
+				<Calculation><![CDATA[<%= options[:tooltip] %>]]></Calculation>
+			</ToolTip><% end %>
+			<FieldObj numOfReps="1" flags="" inputMode="0" displayType="0" quickFind="1" pictFormat="5">
+				<Name><%= fieldQualified %></Name>
+				<Styles>
+					<LocalCSS>
+					self {
+						font-family: -fm-font-family(<%= options[:font] %>);
+						font-size: <%= options[:fontSize] %>;
+					}
+					</LocalCSS>
+				</Styles>
+			</FieldObj>
+		</Object>}.gsub(/^\s*%/, '%')
     tpl = ERB.new(template, 0, '%<>')
     xml = tpl.result(binding)
     @text << xml
@@ -141,33 +144,32 @@ class FileMaker::Snippet
     }.merge(options.delete_blank)
     options[:height] ||= options[:fontSize].to_i + 10
     template = %q{
-      <Object type="Text" key="" LabelKey="0" name="" flags="0" rotation="0">
-      	<Bounds top="<%= options[:top].to_i %>" left="<%= options[:left].to_i %>" bottom="<%= options[:top].to_i + options[:height].to_i %>" right="<%= options[:left].to_i + options[:width].to_i %>"/>
-      	<TextObj flags="0">
-      		<Styles>
-      			<LocalCSS>
-      			self {
-      				font-size: <%= options[:fontSize] %>;
-      				text-align: <%= options[:justification] %>;
-      				<%= "-fm-paragraph-margin-left: #{options[:leftMargin].to_i};" if options[:leftMargin] %>
-      				<%= "-fm-paragraph-margin-right: #{options[:RightMargin].to_i};" if options[:RightMargin] %>
-      			}
-      			</LocalCSS>
-      		</Styles>
-      		<CharacterStyleVector>
-      			<Style>
-      				<Data><%= text %></Data>
-      				<CharacterStyle mask="32695">
-      					<Font-family codeSet="" fontId=""><%= options[:font] %></Font-family>
-      					<Font-size><%= options[:fontSize] %></Font-size>
-      					<Face>0</Face>
-      					<Color><%= options[:textColor] %></Color>
-      				</CharacterStyle>
-      			</Style>
-      		</CharacterStyleVector>
-      	</TextObj>
-      </Object>
-    }.gsub(/^\s*%/, '%')
+		<Object type="Text" key="" LabelKey="0" name="" flags="0" rotation="0">
+			<Bounds top="<%= options[:top].to_i %>" left="<%= options[:left].to_i %>" bottom="<%= options[:top].to_i + options[:height].to_i %>" right="<%= options[:left].to_i + options[:width].to_i %>"/>
+			<TextObj flags="0">
+				<Styles>
+					<LocalCSS>
+					self {
+						font-size: <%= options[:fontSize] %>;
+						text-align: <%= options[:justification] %>;
+						<%= "-fm-paragraph-margin-left: #{options[:leftMargin].to_i};" if options[:leftMargin] %>
+						<%= "-fm-paragraph-margin-right: #{options[:RightMargin].to_i};" if options[:RightMargin] %>
+					}
+					</LocalCSS>
+				</Styles>
+				<CharacterStyleVector>
+					<Style>
+						<Data><%= text %></Data>
+						<CharacterStyle mask="32695">
+							<Font-family codeSet="" fontId=""><%= options[:font] %></Font-family>
+							<Font-size><%= options[:fontSize] %></Font-size>
+							<Face>0</Face>
+							<Color><%= options[:textColor] %></Color>
+						</CharacterStyle>
+					</Style>
+				</CharacterStyleVector>
+			</TextObj>
+		</Object>}.gsub(/^\s*%/, '%')
     tpl = ERB.new(template, 0, '%<>')
     xml = tpl.result(binding)
     @text << xml
@@ -188,7 +190,11 @@ class FileMaker::Snippet
       :fieldLeft    => 0,
       :marginTop    => -1
     }.merge(options.delete_blank)
-    fieldOptions = options.merge({ :fieldTop => 0, :fieldLeft => 0 })
+    fieldOptions = options.merge({
+      :fieldTop   => 0,
+      :fieldLeft => 0,
+      :objectname => nil
+    })
     
     # Prevent field from getting added to @text (I know, this is ugly)
     textOrig = @text.dup
@@ -202,17 +208,16 @@ class FileMaker::Snippet
     end
     
     template = %q{
-  		<Object type="GroupButton" key="" LabelKey="0" flags="" rotation="0">
-  			<Bounds top="<%= options[:fieldTop] || @boundTop %>" left="<%= options[:fieldLeft] %>" bottom="<%= fieldBottom %>" right="<%= options[:fieldLeft].to_i + options[:fieldWidth].to_i %>"/>
-  			<GroupButtonObj numOfObjs="1">
-  				<Step enable="True" id="" name="Perform Script">
-  					<CurrentScript value="Pause"/>
-  					<Calculation><![CDATA[<%= options[:scriptParam] %>]]></Calculation>
-  					<Script id="<%= options[:scriptID] %>" name="<%= options[:scriptName] %>"/>
-  				</Step>
-          <%= field.gsub(/^/,"\t"*2) %>
-        </GroupButtonObj>
-      </Object>}.gsub(/^\s*%/, '%')
+		<Object type="GroupButton" key="" LabelKey="0" name="<%= options[:objectName] %>" flags="" rotation="0">
+			<Bounds top="<%= options[:fieldTop] || @boundTop %>" left="<%= options[:fieldLeft] %>" bottom="<%= fieldBottom %>" right="<%= options[:fieldLeft].to_i + options[:fieldWidth].to_i %>"/>
+			<GroupButtonObj numOfObjs="1">
+				<Step enable="True" id="" name="Perform Script">
+					<CurrentScript value="Pause"/>
+					<Calculation><![CDATA[<%= options[:scriptParam] %>]]></Calculation>
+					<Script id="<%= options[:scriptID] %>" name="<%= options[:scriptName] %>"/>
+				</Step><%= field.gsub(/^/,"\t"*2) %>
+			</GroupButtonObj>
+		</Object>}.gsub(/^\s*%/, '%')
     tpl = ERB.new(template, 0, '%<>')
     xml = tpl.result(binding)
     @text << xml

@@ -25,7 +25,7 @@ module FileMaker::Clipboard
   
   require 'open3'
   
-  # Defined in Snippet.rb
+  # Defined in fmsnippet.rb
   PATH_BASE = File.dirname(__FILE__)
   PATH_COPY = "#{PATH_BASE}/../GetSnippet.applescript"
   PATH_PASTE = "#{PATH_BASE}/../PasteSnippet.applescript"

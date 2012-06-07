@@ -46,7 +46,7 @@ module FileMaker
   DEBUG_ON = Boolean(ENV['TM_DEBUG_ON']) || false
   
   require "#{PATH_BASE}/filemaker/calc.rb"
-  require "#{PATH_BASE}/filemaker/snippet.rb"
+  require "#{PATH_BASE}/filemaker/fmsnippet.rb"
   
   # Customizations
   require "#{PATH_BASE}/filemaker/custom/custom_function.rb"

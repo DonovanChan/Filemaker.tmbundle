@@ -46,11 +46,11 @@ class FileMaker::Snippet
     calc = options[:calculation]
     isGlobal = Boolean(options[:isGlobal]) ? "True" : "False"
     template = %q{
-  <Field id="" dataType="<%= options[:type] %>" fieldType="<%= options[:calculation].nil? ? 'Normal' : 'Calculated' %>" name="<%= name %>">
-    <Calculation table=""><![CDATA[<%= options[:calculation] %>]]></Calculation>
-    <Comment><%= options[:comment] %></Comment>
-    <Storage indexLanguage="English" global="<%= isGlobal %>" maxRepetition="<%= options[:repetitions] %>"/>
-  </Field>}.gsub(/^\s*%/, '%')
+	<Field id="" dataType="<%= options[:type] %>" fieldType="<%= options[:calculation].nil? ? 'Normal' : 'Calculated' %>" name="<%= name %>">
+		<Calculation table=""><![CDATA[<%= options[:calculation] %>]]></Calculation>
+		<Comment><%= options[:comment] %></Comment>
+		<Storage indexLanguage="English" global="<%= isGlobal %>" maxRepetition="<%= options[:repetitions] %>"/>
+	</Field>}.gsub(/^\s*%/, '%')
     tpl = ERB.new(template, 0, '%<>')
     @text << tpl.result(binding)
   end

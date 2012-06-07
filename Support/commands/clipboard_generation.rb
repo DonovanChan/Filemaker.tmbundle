@@ -53,8 +53,8 @@ doc %Q{
 ## Array to Fields
 
 ### Description
-Generates FileMaker snippet of Fields (to be pasted into any table).
-Uses selected text or entire document.
+Generates FileMaker snippet of Fields (to be pasted into any table).  
+Uses selected text or entire document.  
 
 ### Example Usage
 Copy the lines below into a document and run the command again to see it work.
@@ -84,16 +84,16 @@ command :array_to_fields do |paramArray|
   begin
     doc = Snippet.new
     paramArray.split(/\n/).each do |row|
-    	col = row.split(/\t/)
-    	name = col[0]
-    	arg = {
-    		:type        => col[1],
-    		:isGlobal    => col[2] || false,
-    		:comment     => col[3],
-    		:repetitions => col[4],
-    		:calculation => col[5]
-    	}
-    	doc.field(name,arg)
+      col = row.split(/\t/)
+      name = col[0]
+      arg = {
+        :type        => col[1],
+        :isGlobal    => col[2] || false,
+        :comment     => col[3],
+        :repetitions => col[4],
+        :calculation => col[5]
+      }
+      doc.field(name,arg)
     end
     doc.to_xml
   rescue => e
@@ -106,8 +106,8 @@ doc %Q{
 ## Array to Layout Fields
 
 ### Description
-Generates FileMaker snippet of field layout objects (to be pasted onto any layout).
-Uses selected text or entire document.
+Generates FileMaker snippet of field layout objects (to be pasted onto any layout).  
+Uses selected text or entire document.  
 
 ### Compatibility
 FileMaker 12 or newer
@@ -129,6 +129,9 @@ Contacts::Title\tSelf\tHelvetica\t14pt
 | 3 | font  | | No |
 | 4 | fontSize  | | No |
 | 5 | objectName  | | No |
+| 6 | fieldHeight | fontSize + 10 | No |
+| 7 | fieldWidth | 120 | No |
+| 8 | verticalSpacing | 20 | No |
 
 ### Tips
 #{tips}
@@ -137,18 +140,18 @@ command :array_to_layout_fields do |paramArray|
   begin
     doc = Snippet.new
     paramArray.split(/\n/).each { |row|
-    	col = row.split(/\t/)
-    	arg = {
-    		:fieldQualified  => col[0],
-    		:tooltip         => col[1],
-    		:font            => col[2],
-    		:fontSize        => col[3],
-    		:objectName      => col[4],
-    		:fieldHeight     => 18,
-    		:fieldWidth      => 120,
-    		:verticalSpacing => 20
-    	}
-    	doc.layoutField(arg)
+      col = row.split(/\t/)
+      arg = {
+        :fieldQualified  => col[0],
+        :tooltip         => col[1],
+        :font            => col[2],
+        :fontSize        => col[3],
+        :objectName      => col[4],
+        :fieldHeight     => col[5],
+        :fieldWidth      => col[6] || 120,
+        :verticalSpacing => col[7] || 20
+      }
+      doc.layoutField(arg)
     }
     doc
   rescue => e
@@ -161,9 +164,9 @@ doc %Q{
 ## Array to Layout Fields Labeled
 
 ### Description
-Generates FileMaker snippet of field layout objects (to be pasted onto any layout).
-Each field is pasted along with label specified in array.
-Uses selected text or entire document.
+Generates FileMaker snippet of field layout objects (to be pasted onto any layout).  
+Each field is pasted along with label specified in array.  
+Uses selected text or entire document.  
 
 ### Compatibility
 FileMaker 12 or newer
@@ -191,22 +194,22 @@ command :array_to_layout_fields_labeled do |paramArray|
   begin
     doc = Snippet.new
     paramArray.split(/\n/).each do |row|
-    	col = row.split(/\t/)
+      col = row.split(/\t/)
       fontSize = col[4]
       fieldHeight = fontSize ? fontSize.to_i + 10 : 22
-    	fieldOpt = {
-    		:fieldQualified  => col[0],
-    		:tooltip         => col[2],
-    		:font            => col[3],
-    		:fontSize        => fontSize,
-    		:objectName      => col[5],
+      fieldOpt = {
+        :fieldQualified  => col[0],
+        :tooltip         => col[2],
+        :font            => col[3],
+        :fontSize        => fontSize,
+        :objectName      => col[5],
         :fieldHeight     => fieldHeight,
-    		:fieldWidth      => 120,
-    		:verticalSpacing => fieldHeight
-    	}
-    	labelText = col[1]
+        :fieldWidth      => 120,
+        :verticalSpacing => fieldHeight
+      }
+      labelText = col[1]
       labelText = FileMaker::Calc.field_name(col[0]) if labelText.nil? || labelText.empty?
-    	doc.layoutFieldWithLabel(fieldOpt,labelText)
+      doc.layoutFieldWithLabel(fieldOpt,labelText)
     end
     doc
   rescue => e
@@ -219,9 +222,9 @@ doc %Q{
 ## Array to Layout Field Buttons
 
 ### Description
-Generates FileMaker snippet of field layout objects (to be pasted onto any layout).
-Each field is pasted with an optional Perform Script button action.
-Uses selected text or entire document.
+Generates FileMaker snippet of field layout objects (to be pasted onto any layout).  
+Each field is pasted with an optional Perform Script button action.  
+Uses selected text or entire document.  
 
 ### Compatibility
 FileMaker 12 or newer
@@ -236,39 +239,39 @@ Contacts::Title\tSelf\tHelvetica\t14pt\t\t\t\t-1\t146\t"Param not needed"
 
 ### Parameters
 
-| Column  | Definition    | Default Value | Required? |
-|:--------|:--------------|:--------------|:----------|
-| 1 | fully qualified field name  | | Yes |
-| 2 | tooltip  | | No |
-| 3 | font  | | No |
-| 4 | fontSize  | | No |
-| 5 | objectName  | | No |
-| 6 | fieldHeight | fontSize + 10 | No |
-| 7 | fieldWidth  | 120 | No |
-| 8 | marginTop | | No |
-| 9 | script id | | No |
-| 10 | script parameter | | No |
+| Column  | Definition    | Default Value | Required? | Comments |
+|:--------|:--------------|:--------------|:----------|:---------|
+| 1 | fully qualified field name  | | Yes | |
+| 2 | tooltip  | | No | |
+| 3 | font  | | No | |
+| 4 | fontSize  | | No | |
+| 5 | objectName  | | No | |
+| 6 | fieldHeight | fontSize + 10pt or 22pt | No | |
+| 7 | fieldWidth  | 120 | No | |
+| 8 | marginTop | | No | |
+| 9 | script id | | No | Inspect fmxmlsnippet of the script itself. ID is in the "id" attribute of the "Script" element. |
+| 10 | script parameter | | No | |
 }
 command :array_to_layout_field_buttons do |paramArray|
   begin
     doc = Snippet.new
     paramArray.split(/\n/).each do |row|
-    	col = row.split(/\t/)
+      col = row.split(/\t/)
       fontSize = col[3]
       fieldHeight = fontSize ? fontSize.to_i + 10 : 22
-    	fieldOpt = {
-    		:fieldQualified   => col[0],
-    		:tooltip          => col[1],
-    		:font             => col[2],
-    		:fontSize         => fontSize,
-    		:objectName       => col[4],
+      fieldOpt = {
+        :fieldQualified   => col[0],
+        :tooltip          => col[1],
+        :font             => col[2],
+        :fontSize         => fontSize,
+        :objectName       => col[4],
         :fieldHeight      => col[5] || fieldHeight,
-    		:fieldWidth       => col[6] || 120,
-    		:marginTop        => col[7],
+        :fieldWidth       => col[6] || 120,
+        :marginTop        => col[7],
         :scriptID         => col[8],
         :scriptParam      => col[9],
-    	}
-    	doc.layoutFieldButton(fieldOpt)
+      }
+      doc.layoutFieldButton(fieldOpt)
     end
     doc
   rescue => e
@@ -322,17 +325,17 @@ command :array_to_set_field do |paramArray|
   begin
     doc = Snippet.new
     paramArray.split(/\n/).each { |row|
-    	col = row.split(/\t/)
-    	if not col[0].include?("::")
-    	  col[0] = col[0] + '::' + col[1]
-    	  col.slice!(1)
+      col = row.split(/\t/)
+      if not col[0].include?("::")
+        col[0] = col[0] + '::' + col[1]
+        col.slice!(1)
       end
-    	arg = {
-    		:fieldQualified	=> col[0],
-    		:calculation		=> col[1],
-    		:repetition		=> col[2]
-    	}
-    	doc.stepSetField(arg)
+      arg = {
+        :fieldQualified	=> col[0],
+        :calculation		=> col[1],
+        :repetition		=> col[2]
+      }
+      doc.stepSetField(arg)
     }
     doc.to_xml
   rescue => e
@@ -374,12 +377,12 @@ command :array_to_set_variable do |paramArray|
   begin
     doc = Snippet.new
     paramArray.split(/\n/).each { |row| 
-    	col = row.split(/\t/)
-    	name = col[0]
-    	calc = col[1]
-    	rep = col[2]
-    	rep ||= 1
-    	doc.stepSetVariable(name,rep,calc)
+      col = row.split(/\t/)
+      name = col[0]
+      calc = col[1]
+      rep = col[2]
+      rep ||= 1
+      doc.stepSetVariable(name,rep,calc)
     }
     doc.to_xml
   rescue => e
@@ -434,9 +437,9 @@ command :array_to_sort do |paramArray|
     arg = []
     chunk.split(/\n/).each { |row|
       col = row.split(/\t/)
-    	if not col[0].include?("::")
-    	  col[0] = col[0] + '::' + col[1]
-    	  col.slice!(1)
+      if not col[0].include?("::")
+        col[0] = col[0] + '::' + col[1]
+        col.slice!(1)
       end
       arg << {
         :field      => col[0],
@@ -508,19 +511,19 @@ command :array_to_sort_with_tests do |paramArray|
     doc = Snippet.new
     rep = 0
     paramArray.split(/\n/).each { |row|
-    	col = row.split(/\t/)
-    	calc = col[0]
-    	rep += 1
-    	rep == 1 ? doc.stepIf(calc) : doc.stepElseIf(calc)
-    	if not col[1].include?("::")
-    	  col[1] = col[1] + '::' + col[2]
-    	  col.slice!(2)
+      col = row.split(/\t/)
+      calc = col[0]
+      rep += 1
+      rep == 1 ? doc.stepIf(calc) : doc.stepElseIf(calc)
+      if not col[1].include?("::")
+        col[1] = col[1] + '::' + col[2]
+        col.slice!(2)
       end
-    	arg = [{
-    		:field			=> col[1],
-    		:direction		=> col[2]
-    	}]
-    	doc.stepSort(arg)
+      arg = [{
+        :field			=> col[1],
+        :direction		=> col[2]
+      }]
+      doc.stepSort(arg)
     }
     doc.stepEndIf
     doc.to_xml
@@ -536,6 +539,8 @@ doc %Q{
 ### Description
 Generates FileMaker snippet of Field layout objects.  
 Creates grid of fields with specified dimensions and spacing.  
+Each field is pasted with an optional Perform Script button action.  
+Uses selected text or entire document.  
 
 ### Compatibility
 FileMaker 12 or newer
@@ -591,24 +596,24 @@ command :array_to_layout_field_grid do |paramArray|
   begin
     doc = Snippet.new
     paramArray.split(/\n/).each do |row|
-    	col = row.split(/\t/)
+      col = row.split(/\t/)
       fontSize = col[3].to_i
       fieldHeight = fontSize ? fontSize + 10 : 22
       options = {
-      	:fieldQualified   => col[0],
-      	:rowCount         => col[1],
-      	:colCount         => col[2],
+        :fieldQualified   => col[0],
+        :rowCount         => col[1],
+        :colCount         => col[2],
         :repStart         => col[3] || 1,
         :fieldHeight      => col[4] || fieldHeight,
-      	:fieldWidth       => col[5] || 120,
-      	:marginTop        => col[6],
+        :fieldWidth       => col[5] || 120,
+        :marginTop        => col[6],
         :marginLeft       => col[7],
         :scriptID         => col[8],
         :scriptParam      => col[9],
-      	:tooltip          => col[10],
-      	:objectName       => col[11],
+        :tooltip          => col[10],
+        :objectName       => col[11],
       }
-    	doc.layoutFieldGrid(options)
+      doc.layoutFieldGrid(options)
     end
     doc
   rescue => e

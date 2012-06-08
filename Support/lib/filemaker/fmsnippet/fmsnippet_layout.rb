@@ -53,6 +53,7 @@ class FileMaker::Snippet
   # @option options [Integer] :marginTop Space between bottom of previous field to top of current field being generated.
   # @option options [String] :script
   # @option options [String] :scriptParameter
+  # @option options [String] :padding E.g. "0em"
   # @return [String] XML element generated for object. Also updates @boundTop and @boundBottom, which store absolute position value of most recently generated field.
   def layoutField(options={})
     self.set_type('LayoutObjectList')
@@ -77,6 +78,7 @@ class FileMaker::Snippet
     # Absolute measurements
     @boundTop = @boundBottom.nil? ? 0 : @boundBottom.to_i + options[:marginTop].to_i
     @boundBottom = @boundTop + options[:fieldHeight].to_i
+    @boundLeft = options[:fieldLeft]
     
     # Relative measurements (used when contained by parent object)
     if options[:fieldTop].nil?
@@ -95,11 +97,12 @@ class FileMaker::Snippet
 				<Name><%= fieldQualified %></Name>
 				<Styles>
 					<LocalCSS>
-					self {
-						font-family: -fm-font-family(<%= options[:font] %>);
-						font-size: <%= options[:fontSize] %>;
-					}
-					</LocalCSS>
+						self {
+							font-family: -fm-font-family(<%= options[:font] %>);
+							font-size: <%= options[:fontSize] %>;
+						}<% if options[:fieldPadding] %>
+						self .inner_border { padding: <%= options[:fieldPadding] %>; }
+					<% end %></LocalCSS>
 				</Styles>
 			</FieldObj>
 		</Object>}.gsub(/^\s*%/, '%')
@@ -110,12 +113,12 @@ class FileMaker::Snippet
   end
   
   # Constructs layout field object with label and appends to @text
-  def layoutFieldWithLabel(fieldOptions,labelText,labelOptions={},labelOuterMargin = 11)
-    bounds = self.layoutField(fieldOptions)
+  def layoutFieldWithLabel(fieldOptions,labelText,labelOptions={},labelMarginRight = 11)
+    field = self.layoutField(fieldOptions)
     labelOptions[:width] ||= 100
     labelOptions = {
-      :top    => bounds[:top].to_i,
-      :left   => bounds[:left].to_i - labelOptions[:width].to_i - labelOuterMargin.to_i
+      :top    => @boundTop,
+      :left   => @boundLeft.to_i - labelOptions[:width].to_i - labelMarginRight.to_i
     }.merge(labelOptions.delete_blank)
     self.layoutText(labelText,labelOptions)
   end
@@ -136,11 +139,11 @@ class FileMaker::Snippet
     self.set_type('LayoutObjectList')
     return nil unless text
     options = {
-      :font         => "Verdana",
-      :fontSize     => 12,
+      :font           => "Verdana",
+      :fontSize       => 12,
       :justification  => 3,
-      :textColor    => '#000000',
-      :width        => 120
+      :textColor      => '#000000',
+      :width          => 120
     }.merge(options.delete_blank)
     options[:height] ||= options[:fontSize].to_i + 10
     template = %q{
@@ -250,7 +253,7 @@ class FileMaker::Snippet
         :tooltip        => eval(%Q[%Q[#{options[:tooltip]}]]),
         :objectName     => eval(%Q[[#{options[:objectName]}]])
       })
-      self.layoutFieldButton(opt)
+      options[:scriptID] ? self.layoutFieldButton(opt) : self.layoutField(opt)
       rep += 1
     end
     self.to_xml

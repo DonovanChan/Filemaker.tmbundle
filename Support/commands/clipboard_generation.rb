@@ -575,6 +575,7 @@ Square grid of 16 fields.
 | 10 | script parameter | | No | Supports Ruby-like expressions (see below) |
 | 11 | tooltip  | | No | Supports Ruby-like expressions (see below) |
 | 12 | objectName  | | No | Supports Ruby-like expressions (see below) |
+| 13 | fieldPadding | | No | |
 
 #### Ruby-style expressions
 
@@ -612,6 +613,7 @@ command :array_to_layout_field_grid do |paramArray|
         :scriptParam      => col[9],
         :tooltip          => col[10],
         :objectName       => col[11],
+        :fieldPadding     => col[12],
       }
       doc.layoutFieldGrid(options)
     end

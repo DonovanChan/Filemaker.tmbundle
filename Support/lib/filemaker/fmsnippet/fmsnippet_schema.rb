@@ -37,7 +37,7 @@ class FileMaker::Snippet
   # @option options [String] :calculation
   # @return [String] XML element generated for field
   def field(name,options={})
-    name = field_name(name)
+    name = FileMaker::Calc.field_name(name)
     options = {
       :type         => "Text",
       :isGlobal     => false,

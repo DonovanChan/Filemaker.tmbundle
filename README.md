@@ -14,27 +14,20 @@ This project was forked from a simpler version by Matt Petrowsky.  His bundle wa
 
 ### For easy installation
 
-1. Download these files. (You should see a giant "Downloads" button on the top-right.)
+1. Download these files. (You can use the "Zip" button.)
 1. Extract the .zip contents if necessary.
 1. Change the name of the folder to "FileMaker.tmbundle". (You will have to remove some metadata from the name.)
-1. Double-click on the file.
-
-That's it! TextMate will install the bundle automatically into "~/Library/ApplicationSupport/TextMate/Bundles"
+1. Move the folder to ~/Library/Application\ Support/Sublime\ Text\ 2/Packages
 
 ### For easy upgrades
 
+For easiest updates, use git. You can install git following these [instructions](https://help.github.com/articles/set-up-git). Install using these commands:
+
 You can set up the bundle as a git repository right where TextMate installs it. Here are the Terminal commands:
 
-	mkdir -p ~/Library/Application\ Support/TextMate/Bundles
-	cd ~/Library/Application\ Support/TextMate/Bundles
-	git clone git://github.com/DonovanChan/filemaker.tmbundle.git -b SublimeText2 "FileMaker.tmbundle"
-	osascript -e 'tell app "TextMate" to reload bundles'
-
-The TextMate 2 pre-release stores bundles in a different place, however:
-
-	mkdir -p ~/Library/Application\ Support/Avian/Bundles
-	cd ~/Library/Application\ Support/Avian/Bundles
-	git clone git://github.com/DonovanChan/filemaker.tmbundle.git -b SublimeText2 "FileMaker.tmbundle"
+	mkdir -p ~/Library/Application\ Support/Sublime\ Text\ 2/Packages
+	cd ~/Library/Application\ Support/Sublime\ Text\ 2/Packages
+	git clone -b SublimeText2 git://github.com/DonovanChan/filemaker.tmbundle.git
 
 ## History
 

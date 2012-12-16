@@ -348,7 +348,7 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>(?:^\s+)?(&lt;)((?i:LocalCSS))\b(?![^&gt;]*/&gt;)</string>
+			<string>(?:^\s+)?(&lt;)((?i:LocalCSS)|(?i:FullCSS))\b(?![^&gt;]*/&gt;)</string>
 			<key>captures</key>
 			<dict>
 				<key>1</key>

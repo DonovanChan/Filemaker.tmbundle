@@ -50,7 +50,7 @@
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>-[0-9]{4}\t(.*?fp7)\s</string>
+			<string>-[0-9]{4}\t(.*?(?:fp7)|(?:fmp12))\s</string>
 		</dict>
 		<dict>
 			<key>captures</key>

@@ -10,7 +10,19 @@
 text = STDIN.read
 
 # Calculation contents
-text.scan(/[\s\[]*?([\S]+?::[\S]+?)[\s]/) { |f| print f, "\n"}</string>
+regx = /[\s\[]*?(				#
+	(?:[\S]+?::[^\$][\S]+?)|	# Regular field
+	(?:[\S]+?::\$\{.+?\})		# Field with irregular characters
+	)[\s]
+/x
+
+arr = []
+text.scan(regx) { |f| arr &lt;&lt; f }
+arr.uniq.sort.each{|f| puts f}
+
+
+# text.scan(/[\s\[]*?([\S]+?::[^\$][\S]+?)[\s]/) { |f| puts f }
+# text.scan(/[\s\[]*?([\S]+?::\$\{.+?\})/) { |f| puts f }</string>
 	<key>input</key>
 	<string>selection</string>
 	<key>name</key>

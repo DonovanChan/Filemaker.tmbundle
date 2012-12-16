@@ -44,7 +44,7 @@ module FileMaker::Calc
   # Extracts names of functions used in text
   # @param [String] text Calculation containing function names to extract
   # @return [Array] Names of functions in text
-  def extract_functions(text)
+  def self.extract_functions(text)
     text.to_s.scan(/[#a-zA-Z\._-]+?(?=\s*\()/)
   end
 

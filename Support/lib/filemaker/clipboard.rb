@@ -85,18 +85,20 @@ module FileMaker::Clipboard
   # Loads contents of Snippet object to FileMaker's clipboard
   # @return [String,nil] XML that was loaded to the clipboard. Returns nil in case of error.
   def self.set(object)
-    text = self.escape_for_shell(object.to_xml)
-    # Use xargs -0 so we can provide long strings with single quotes and spaces
-    # osascript '-s o' option prints errors to stdout
-    shellScript = %Q[echo '#{text}'|xargs -0 osascript -s o "#{PATH_PASTE}"]
-    result = `#{shellScript}`
-    result.gsub!(/\r/,"\n") if result
-    if result.start_with?('Error validating XML')
-      raise ArgumentError, result
-    elsif result.start_with?('Error')
-      raise ArgumentError, "Invalid/Unsupported string. Could be trouble with extended ascii character.\n#{result}"
+    begin
+      text = self.escape_for_shell(object.to_xml)
+      # Use xargs -0 so we can provide long strings with single quotes and spaces
+      # osascript '-s o' option prints errors to stdout
+      shellScript = %Q[echo '#{text}'|xargs -0 osascript -s o "#{PATH_PASTE}"]
+      result = `#{shellScript}`
+      result.gsub!(/\r/,"\n") if result
+      if result.start_with?('Error validating XML')
+        raise ArgumentError, result
+      elsif result.start_with?('Error')
+        raise ArgumentError, "Invalid/Unsupported string. Could be trouble with extended ascii character.\n#{result}"
+      end
+      return result
     end
-    return result
   end
   
 end

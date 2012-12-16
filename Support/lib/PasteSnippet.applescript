@@ -122,11 +122,12 @@ on determineClass(clipText)
 		set clipText to searchReplaceText(clipText, "<?", "?")
 		set array to my split(clipText, "<")
 		set child1 to item 3 of array
+		set child2 to item 4 of array
 	on error errMsg number errNum
 		--return "Error: " & errNum & ": " & errMsg
 		return "Error: Unrecognized format"
 	end try
-	if child1 starts with "Script" then
+	if (child1 starts with "Script") or (child2 starts with "Script") then
 		set theClass to "XMSC"
 	else if child1 starts with "Step" then
 		set theClass to "XMSS"

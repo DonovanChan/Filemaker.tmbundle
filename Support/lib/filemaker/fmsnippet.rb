@@ -52,7 +52,7 @@ class FileMaker::Snippet
   # @return [true] Currently performs no error handling
   def set_type(type='')
     case @text
-    when /\<Layout\b/, /\<ObjectStyle\b/, /\<LocalCSS\b/, type == 'LayoutObjectList'
+    when /\<Layout enclosing/, /\<ObjectStyle\b/, /\<LocalCSS\b/, type == 'LayoutObjectList'
       @type = 'LayoutObjectList'
       @boundTop = 0
     when /\<Step\b/
@@ -68,7 +68,7 @@ class FileMaker::Snippet
     self.set_type
     header = %Q{<?xml version="1.0" encoding="UTF-8"?>\n<#{ROOT} type="#{@type}">}
     footer = "\n</#{ROOT}>"
-    if @type == 'LayoutObjectList' && !@text.match(/<Layout/iu)
+    if @type == 'LayoutObjectList' && !@text.match(/<Layout/i)
       @text = @text.insert(0,"\n\t<Layout>")
     end
     @text = @text.insert(0,header) unless @text.to_s.include?("<#{ROOT}")

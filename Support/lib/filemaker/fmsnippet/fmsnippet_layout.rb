@@ -241,7 +241,6 @@ class FileMaker::Snippet
     rep = options[:repStart].to_i || 1
     repMax = rep + options[:rowCount].to_i * options[:colCount].to_i - 1
     while rep <= repMax
-      # puts eval(%Q["#{options[:scriptParam]}"])
       col = (rep.to_f / options[:rowCount].to_i).ceil
       row = rep % options[:rowCount].to_i
       row = rep/col if row == 0
@@ -253,7 +252,7 @@ class FileMaker::Snippet
         :tooltip        => eval(%Q[%Q[#{options[:tooltip]}]]),
         :objectName     => eval(%Q[[#{options[:objectName]}]])
       })
-      options[:scriptID] ? self.layoutFieldButton(opt) : self.layoutField(opt)
+      options[:scriptID].empty? ? self.layoutField(opt) : self.layoutFieldButton(opt)
       rep += 1
     end
     self.to_xml

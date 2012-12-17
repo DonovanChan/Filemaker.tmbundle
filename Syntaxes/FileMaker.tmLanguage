@@ -20,16 +20,18 @@
 	<key>patterns</key>
 	<array>
 		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.comment.filemaker</string>
+				</dict>
+			</dict>
 			<key>match</key>
-			<string>\b(Average|Count|List|Max|Min|StDev|StDevP|Sum|Variance|VarianceP|Date|Day|DayName|DayNameJ|DayOfWeek|DayOfYear|Month|MonthName|MonthNameJ|WeekOfYear|WeekOfYearFiscal|Year|YearName|DatabaseNames|FieldBounds|FieldComment|FieldIDs|FieldNames|FieldRepetitions|FieldStyle|FieldType|GetNextSerialValue|LayoutIDs|LayoutNames|LayoutObjectNames|RelationInfo|ScriptIDs|ScriptNames|TableIDs|TableNames|ValueListIDs|ValueListItems|ValueListNames|WindowNames|External|FV|NPV|PMT|PV|Case|Choose|Evaluate|EvaluationError|GetAsBoolean|GetField|GetFieldName|GetLayoutObjectAttribute|GetNthRecord|If|IsEmpty|IsValid|IsValidExpression|Let|Lookup|LookupNext|Self|Abs|Ceiling|Combination|Div|Exp|Factorial|Floor|Int|Lg|Ln|Log|Mod|Random|Round|SetPrecision|Sign|Sqrt|Truncate|Extend|GetRepetition|Last|GetSummary|Char|Code|Exact|Filter|FilterValues|GetAsCSS|GetAsDate|GetAsNumber|GetAsSVG|GetAsText|GetAsTime|GetAsTimestamp|GetAsURLEncoded|GetValue|Hiragana|KanaHankaku|KanaZenkaku|KanjiNumeral|Katakana|Left|LeftValues|LeftWords|Length|Lower|Middle|MiddleValues|MiddleWords|NumToJText|PatternCount|Position|Proper|Quote|Replace|Right|RightValues|RightWords|RomanHankaku|RomanZenkaku|SerialIncrement|Substitute|Trim|TrimAll|Upper|ValueCount|WordCount|RGB|TextColor|TextColorRemove|TextFont|TextFontRemove|TextFormatRemove|TextSize|TextSizeRemove|TextStyleAdd|TextStyleRemove|Hour|Minute|Seconds|Time|Timestamp|Acos|Asin|Atan|Cos|Degrees|Pi|Radians|Sin|Tan|Get|GetHeight|GetThumbnail|GetWidth|VerifyContainer|ExecuteSQL|Location|LocationValues)\b</string>
+			<string>(//).*?($\n?)</string>
 			<key>name</key>
-			<string>support.function.builtin_functions.filemaker</string>
-		</dict>
-		<dict>
-			<key>match</key>
-			<string>\b(FMSAUC_FindPlugin|FMSAUC_UpdatePlugIn|FMSAUC_Version)\b</string>
-			<key>name</key>
-			<string>support.function.external_functions.filemaker</string>
+			<string>comment.line.double-slash.filemaker</string>
 		</dict>
 		<dict>
 			<key>begin</key>
@@ -41,14 +43,16 @@
 			<key>patterns</key>
 			<array>
 				<dict>
-					<key>match</key>
-					<string>\\"</string>
-					<key>name</key>
-					<string>constant.character.escape.filemaker</string>
+					<key>include</key>
+					<string>text.filemaker.hash</string>
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>text.filemaker.hash</string>
+					<string>#nested_string</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#escaped_char</string>
 				</dict>
 			</array>
 		</dict>
@@ -69,18 +73,16 @@
 			<string>comment.block.filemaker</string>
 		</dict>
 		<dict>
-			<key>captures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.definition.comment.filemaker</string>
-				</dict>
-			</dict>
 			<key>match</key>
-			<string>(//).*?($\n?)</string>
+			<string>\b(Average|Count|List|Max|Min|StDev|StDevP|Sum|Variance|VarianceP|Date|Day|DayName|DayNameJ|DayOfWeek|DayOfYear|Month|MonthName|MonthNameJ|WeekOfYear|WeekOfYearFiscal|Year|YearName|DatabaseNames|FieldBounds|FieldComment|FieldIDs|FieldNames|FieldRepetitions|FieldStyle|FieldType|GetNextSerialValue|LayoutIDs|LayoutNames|LayoutObjectNames|RelationInfo|ScriptIDs|ScriptNames|TableIDs|TableNames|ValueListIDs|ValueListItems|ValueListNames|WindowNames|External|FV|NPV|PMT|PV|Case|Choose|Evaluate|EvaluationError|GetAsBoolean|GetField|GetFieldName|GetLayoutObjectAttribute|GetNthRecord|If|IsEmpty|IsValid|IsValidExpression|Let|Lookup|LookupNext|Self|Abs|Ceiling|Combination|Div|Exp|Factorial|Floor|Int|Lg|Ln|Log|Mod|Random|Round|SetPrecision|Sign|Sqrt|Truncate|Extend|GetRepetition|Last|GetSummary|Char|Code|Exact|Filter|FilterValues|GetAsCSS|GetAsDate|GetAsNumber|GetAsSVG|GetAsText|GetAsTime|GetAsTimestamp|GetAsURLEncoded|GetValue|Hiragana|KanaHankaku|KanaZenkaku|KanjiNumeral|Katakana|Left|LeftValues|LeftWords|Length|Lower|Middle|MiddleValues|MiddleWords|NumToJText|PatternCount|Position|Proper|Quote|Replace|Right|RightValues|RightWords|RomanHankaku|RomanZenkaku|SerialIncrement|Substitute|Trim|TrimAll|Upper|ValueCount|WordCount|RGB|TextColor|TextColorRemove|TextFont|TextFontRemove|TextFormatRemove|TextSize|TextSizeRemove|TextStyleAdd|TextStyleRemove|Hour|Minute|Seconds|Time|Timestamp|Acos|Asin|Atan|Cos|Degrees|Pi|Radians|Sin|Tan|Get|GetHeight|GetThumbnail|GetWidth|VerifyContainer|ExecuteSQL|Location|LocationValues)\b</string>
 			<key>name</key>
-			<string>comment.line.double-slash.filemaker</string>
+			<string>support.function.builtin_functions.filemaker</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>\b(FMSAUC_FindPlugin|FMSAUC_UpdatePlugIn|FMSAUC_Version)\b</string>
+			<key>name</key>
+			<string>support.function.external_functions.filemaker</string>
 		</dict>
 		<dict>
 			<key>match</key>
@@ -143,9 +145,26 @@
 			<string>keyword.operator.assignment.filemaker</string>
 		</dict>
 	</array>
+	<key>repository</key>
+	<dict>
+		<key>escaped_char</key>
+		<dict>
+			<key>match</key>
+			<string>\\(¶|\\|")</string>
+			<key>name</key>
+			<string>constant.character.escape.filemaker</string>
+		</dict>
+		<key>nested_string</key>
+		<dict>
+			<key>begin</key>
+			<string>\"</string>
+			<key>end</key>
+			<string>\"</string>
+			<key>name</key>
+			<string>source.filemaker.embedded.source</string>
+		</dict>
+	</dict>
 	<key>scopeName</key>
-	<string>source.filemaker</string>
-	<key>scope</key>
 	<string>source.filemaker</string>
 	<key>uuid</key>
 	<string>B60B1704-B890-43ED-80B5-E5E827CD55A3</string>

@@ -17,6 +17,19 @@
 	<key>patterns</key>
 	<array>
 		<dict>
+			<key>comment</key>
+			<string>NOT matching!!! Not sure why.</string>
+			<key>name</key>
+			<string>constant</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#hash_value</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
 			<key>begin</key>
 			<string>((/*)&lt;\2:)</string>
 			<key>captures</key>
@@ -33,16 +46,18 @@
 				</dict>
 			</dict>
 			<key>contentName</key>
-			<string>entity.name.tag.localname.hash</string>
+			<string>entity.name.tag.hash</string>
 			<key>end</key>
 			<string>(\2:\2=)</string>
 			<key>patterns</key>
 			<array>
 				<dict>
-					<key>match</key>
-					<string>(/*&lt;/*:)|(/*:/*&gt;)|(/*:/*=)</string>
-					<key>name</key>
-					<string>punctuation.definition.tag.hash</string>
+					<key>include</key>
+					<string>#tag_chars</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#hash_value</string>
 				</dict>
 			</array>
 		</dict>
@@ -59,8 +74,27 @@
 			<string>(/*:/*&gt;)</string>
 		</dict>
 	</array>
-	<key>scope</key>
-	<string>source.filemaker.hash</string>
+	<key>repository</key>
+	<dict>
+		<key>hash_value</key>
+		<dict>
+			<key>begin</key>
+			<string>((/*):\2=)</string>
+			<key>contentName</key>
+			<string>string.hash</string>
+			<key>end</key>
+			<string>(\2:\2&gt;)</string>
+		</dict>
+		<key>tag_chars</key>
+		<dict>
+			<key>match</key>
+			<string>(/*&lt;/*:)|(/*:/*&gt;)|(/*:/*=)</string>
+			<key>name</key>
+			<string>punctuation.definition.tag.hash</string>
+		</dict>
+	</dict>
+	<key>scopeName</key>
+	<string>string.filemaker.hash</string>
 	<key>uuid</key>
 	<string>E06766B0-3F1B-494C-886E-6CFFEF39FFF0</string>
 </dict>

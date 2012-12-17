@@ -348,7 +348,7 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>(?:^\s+)?(&lt;)((?i:LocalCSS))\b(?![^&gt;]*/&gt;)</string>
+			<string>(?:^\s+)?(&lt;)((?i:LocalCSS)|(?i:FullCSS))\b(?![^&gt;]*/&gt;)</string>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
@@ -525,7 +525,7 @@
 			</array>
 		</dict>
 	</dict>
-	<key>scope</key>
+	<key>scopeName</key>
 	<string>text.xml.filemakerClipboard</string>
 	<key>uuid</key>
 	<string>41B129D5-F561-4C71-B96F-2DEF25CB246F</string>

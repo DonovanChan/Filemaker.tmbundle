@@ -5,7 +5,7 @@
 	<key>fileTypes</key>
 	<array/>
 	<key>firstLineMatch</key>
-	<string>.*((Starting FileMaker Server)|(Import operations started)|(\*\*\* Started consistency check)).*</string>
+	<string>.*((Starting FileMaker Server)|(Import operations started)|(\*\*\* Started consistency check)|(Container Data Transfer started)).*</string>
 	<key>foldingStartMarker</key>
 	<string>started$</string>
 	<key>foldingStopMarker</key>
@@ -48,14 +48,9 @@
 					<key>name</key>
 					<string>entity.name.tag</string>
 				</dict>
-				<key>2</key>
-				<dict>
-					<key>name</key>
-					<string>entity.name.tag</string>
-				</dict>
 			</dict>
 			<key>match</key>
-			<string>-[0-9]{4}\s(.*?)(fp7)\s</string>
+			<string>-[0-9]{4}\t(.*?(?:fp7)|(?:fmp12))\s</string>
 		</dict>
 		<dict>
 			<key>captures</key>
@@ -114,10 +109,18 @@
 			<string>meta</string>
 		</dict>
 		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>constant.filemaker</string>
+				</dict>
+			</dict>
 			<key>match</key>
-			<string>(Item|Table|Function|Field)</string>
+			<string>[0-9]{1,4}\t(Item|Table|Function|Field|Script|Layout)</string>
 			<key>name</key>
-			<string>constant.filemaker</string>
+			<string></string>
 		</dict>
 		<dict>
 			<key>captures</key>
@@ -183,7 +186,7 @@
 			<string>storage.type.method</string>
 		</dict>
 	</array>
-	<key>scope</key>
+	<key>scopeName</key>
 	<string>text.fmlog</string>
 	<key>uuid</key>
 	<string>034E35EE-B4C1-474C-B52E-9B24270FB643</string>

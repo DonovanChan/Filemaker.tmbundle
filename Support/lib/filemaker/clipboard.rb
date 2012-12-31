@@ -2,29 +2,29 @@
 # encoding: UTF-8
 #
 # clipboard.rb - helps get and put FileMaker objects on the clipboard
-# 
+#
 # Author::      Donovan Chandler (mailto:donovan_c@beezwax.net)
 # Copyright::   Copyright (c) 2010-2012 Donovan Chandler
 # License::     Distributed under GNU General Public License <http://www.gnu.org/licenses/>
-# 
+#
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
 # (at your option) any later version.
-# 
+#
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
-# 
+#
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
 module FileMaker::Clipboard
-  
+
   require 'open3'
-  
+
   # Defined in fmsnippet.rb
   PATH_BASE = File.dirname(__FILE__)
   PATH_COPY = "#{PATH_BASE}/../GetSnippet.applescript"
@@ -33,7 +33,7 @@ module FileMaker::Clipboard
 
   # Encodes text for submission to AppleScript that loads fmxmlsnippet to the clipboard
   # @note Uses hard-coded placeholders for high-ascii characters. See PATH_ENCODE for logic.
-  # @param [String] text 
+  # @param [String] text
   # @return [String] Text with extended ascii characters escaped with placeholders
   # @example
   #   "en-dash: –".encoded_text #=> "en-dash: #:8211:#"
@@ -48,12 +48,12 @@ module FileMaker::Clipboard
   def self.escape_for_shell(text=self.to_s)
     text.gsub(/'/u,"'\\\\''")
   end
-  
+
   # def paste
   #   IO.popen('pbcopy', 'w+') { |clipboard| clipboard.print self.to_s }
   #   `osascript -e 'tell application "System Events" to keystroke "v" using {command down}'`
   # end
-  
+
   # Tells OS to paste supplied text at cursor. Allows TextMate bundle command to return multiple output types.
   def self.paste
     text = self.to_s
@@ -76,8 +76,10 @@ module FileMaker::Clipboard
     begin
       `#{shellScript}`
     rescue => e
-      puts e.message
-      puts e.backtrace
+      if FileMaker::DEBUG_ON
+        puts e.message
+        puts e.backtrace
+      end
       raise IOError "Unrecognized clipboard data"
     end
   end
@@ -100,5 +102,5 @@ module FileMaker::Clipboard
       return result
     end
   end
-  
+
 end

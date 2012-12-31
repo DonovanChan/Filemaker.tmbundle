@@ -72,7 +72,7 @@ doc %Q{
 ## Extract Calculations
 
 ### Description
-Extracts all FileMaker calculations from any fmxmlsnippet.  
+Extracts all FileMaker calculations from any fmxmlsnippet.
 Delimits each calculation with '#{result_delimiter.strip}'
 
 ### Compatibility
@@ -109,7 +109,7 @@ doc %Q{
 ## Filter Clipboard Snippet to Unique Functions
 
 ### Description
-Compares current fmxmlsnippet document with one on clipboard.  
+Compares current fmxmlsnippet document with one on clipboard.
 Returns fmxmlsnippet containing functions from clipboard that are NOT in the current document.
 
 ### Compatibility
@@ -176,7 +176,10 @@ FileMaker 7 or newer
 ### Usage Instructions
 
 1. Copy custom functions in FileMaker
+1. Ensure your current document is not empty (to prevent this help window)
 1. Run this command
+
+You can save the clipboard to a text file and run this command against it, or you can simply run it after loading the functions to your clipboard. Just make sure that the document is not empty so you don't see this help window again.
 
 ### Notes
 
@@ -191,17 +194,17 @@ command :save_functions do |text|
     dPath = "#{ENV['TM_SUPPORT_PATH']}/bin/CocoaDialog.app/Contents/MacOS/CocoaDialog"
 
     # Settings
-    ext = "calc"	# default file extension
+    ext = "calc"  # default file extension
 
     # Get text from file or clipboard
     unless FileMaker::Snippet.customFunction?(text)
       text = FileMaker::Clipboard.get
     end
     if text.empty?
-    	puts 'Unrecognized clipboard format'
-    	TextMate.exit_replace_text
+      puts 'Unrecognized clipboard format'
+      TextMate.exit_show_tool_tip
     end
-    
+
     doc = REXML::Document.new text
 
     # Prompt for preferences
@@ -221,24 +224,21 @@ command :save_functions do |text|
     # ext ||= ext
 
     def XMLToHash(rexmlDoc)
-    	dic = Hash.new
-    	rexmlDoc.elements.each("//CustomFunction") do |function|
-    		name = function.attributes["name"]
-    		text = function.elements["Calculation"].text
-    		dic[name] = text
-    	end
-    	return dic
+      dic = Hash.new
+      rexmlDoc.elements.each("//CustomFunction") do |function|
+        name = function.attributes["name"]
+        text = function.elements["Calculation"].text
+        dic[name] = text
+      end
+      return dic
     end
 
     dic = XMLToHash(doc)
-    p dic
-  	dic.each do |key, value|
-      puts "#{dir.rstrip}/#{key}.#{ext}"
-      puts value
-  		File.open("#{dir.rstrip}/#{key}.#{ext}", 'w') {|f| f.write(value)}
-  	end
-    "Files saved to #{dir}"
-    
+    dic.each do |key, value|
+      File.open("#{dir.rstrip}/#{key}.#{ext}", 'w') {|f| f.write(value)}
+    end
+    TextMate.exit_show_html "<h2>Save Custom Functions to Files</h2><h4>Files saved to following directory:</h4><p>#{dir}</p>"
+
   rescue => e
     return_error(e)
   end

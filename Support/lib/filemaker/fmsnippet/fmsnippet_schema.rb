@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby -KU
+#!/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby -KU
 # encoding: UTF-8
 #
 # fmsnippet_schema.rb - helps manipulate and construct fmxmlsnippets for fields and tables
@@ -54,5 +54,5 @@ class FileMaker::Snippet
     tpl = ERB.new(template, 0, '%<>')
     @text << tpl.result(binding)
   end
-    
+
 end

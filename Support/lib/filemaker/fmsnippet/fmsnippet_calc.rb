@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby -KU
+#!/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby -KU
 # encoding: UTF-8
 #
 # fmsnippet_calc.rb - helps manipulate and construct fmxmlsnippets for custom functions
@@ -26,7 +26,7 @@ require 'erb'
 class FileMaker::Snippet
 
   here = File.dirname(__FILE__)
-  
+
   require 'rexml/document'
 
   # Returns array of calculations in fmxmlsnippet
@@ -34,7 +34,7 @@ class FileMaker::Snippet
     doc = REXML::Document.new(self.to_s)
     doc.elements.to_a("//Calculation").reduce([]){|memo,e| memo.concat(e.cdatas)}
   end
-  
+
   # Given custom function definitions, returns array of names and parameters of each
   def extract_functions
     doc = REXML::Document.new(self.to_s)
@@ -63,5 +63,5 @@ class FileMaker::Snippet
   def self.customFunction?(text)
     text =~ /<CustomFunction\b/ ? true : false
   end
-    
+
 end

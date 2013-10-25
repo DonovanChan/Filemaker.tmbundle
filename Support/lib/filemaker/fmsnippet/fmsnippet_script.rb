@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby -KU
+#!/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby -KU
 # encoding: UTF-8
 #
 # fmsnippet_script.rb - helps manipulate and construct fmxmlsnippets for scripts
@@ -26,7 +26,7 @@ require 'erb'
 class FileMaker::Snippet
 
   here = File.dirname(__FILE__)
-  
+
   require 'rexml/document'
 
   # Constructs comment script step and appends to @text
@@ -99,7 +99,7 @@ class FileMaker::Snippet
     tpl = ERB.new(template, 0, '%<>')
     @text << tpl.result(binding)
   end
-    
+
   # Constructs Exit Script script step and appends to @text
   # @param [String] calculation FileMaker calculation for exit condition
   # @return [String] XML element generated for script step
@@ -209,5 +209,5 @@ class FileMaker::Snippet
     tpl = ERB.new(template, 0, '%<>')
     @text << tpl.result(binding)
   end
-    
+
 end

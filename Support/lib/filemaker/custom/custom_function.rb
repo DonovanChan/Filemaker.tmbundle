@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby -KU
+#!/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby -KU
 # encoding: UTF-8
 #
 # custom_function.rb - custom logic for manipulating FileMaker custom functions
@@ -23,7 +23,7 @@
 
 # Handles actions specific to custom functions. Switch out this module to suite your own conventions.
 module FileMaker::FunctionCustom
-  
+
   # here = File.dirname(__FILE__)
   # require "#{here}/comments.rb"
   # include Comments
@@ -88,7 +88,7 @@ module FileMaker::FunctionCustom
     calculation = array.reverse.join("\n")
     calculation.gsub('::93::',']').gsub('::59::',';')
   end
-  
+
   # Returns calculation with operators and delimiters moved to begining of each line
   # @param [String] calculation
   # @return [String] Calculation with operators and delimiters moved to begining of each line
@@ -128,7 +128,7 @@ module FileMaker::FunctionCustom
     calculation = array.join("\n")
     calculation.gsub('::93::',']').gsub('::59::',';')
   end
-  
+
   # Returns list of appended lines as List( ) calculation
   # @param [String] calculation Calculation to be converted
   # @return [String] Calculation wrapped in List( ) function with any trailing ampersand (&) on a line replaced with a semi-colon (;)
@@ -139,7 +139,7 @@ module FileMaker::FunctionCustom
     calculation.gsub!(/&\s*$/,";")
     "List (\n  #{calculation}\n)"
   end
-  
+
   # Stub currently just used for testing and documentation
   def function_example
     %Q{
@@ -154,7 +154,7 @@ NOTES:
 
 */}
   end
-  
+
 end
 
 module FileMaker

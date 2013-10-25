@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby -KU
+#!/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby -KU
 # encoding: UTF-8
 #
 # help_function.rb
@@ -29,14 +29,14 @@ module FileMaker::FMHelp
 
   # Searches FUNCTION_URLS for key matching query or containing query within '(' and ')'. Returns url to page for that entry. Ignores case and whitespace in query.
   #   get_function_doc('currenttime') = 'http://www.filemaker.com/12help/html/func_ref2.32.24.html#1052625'
-  #   get_function_doc('Get(CurrentTime)') = 'http://www.filemaker.com/12help/html/func_ref2.32.24.html#1052625'  
+  #   get_function_doc('Get(CurrentTime)') = 'http://www.filemaker.com/12help/html/func_ref2.32.24.html#1052625'
   def self.get_function_doc(query)
     query = query.dup
     query.gsub!(/\s/,'')
     query.downcase!
     FUNCTION_URLS[query] || FUNCTION_URLS.select{|key,value| key =~ /\(#{query}\)/ }.first.to_a[1] #|| FUNCTION_INDEX_URL
   end
-  
+
   # Generated using following shell command
   #   ruby -e 'STDOUT << "FUNCTION_URLS = {\n" << `curl -s http://www.filemaker.com/12help/html/help_func_alpha.html`.scan(%r{<div class=".*?"><a href="(.*?)" name=".*?">(.*?)</a></div>}).map { |e| "  \"#{e[1].downcase.gsub(/\s/, nil.to_s)}\"".ljust(30) + " => fmbase + \"#{e[0]}\"" }.join(",\n") << "\n}\n"'
   FUNCTION_URLS = {

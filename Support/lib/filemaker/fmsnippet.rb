@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby -KU
+#!/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby -KU
 # encoding: UTF-8
 #
 # fmsnippet.rb - helps manipulate and construct FileMaker clipboard XML (snippets)
@@ -28,7 +28,7 @@ class FileMaker::Snippet
 
   PATH_BASE = File.dirname(__FILE__)
   ROOT = 'fmxmlsnippet'
-  
+
   require 'erb'
   require 'rexml/document'
   path_children = "#{PATH_BASE}/fmsnippet"
@@ -62,7 +62,7 @@ class FileMaker::Snippet
     end
     true
   end
-    
+
   # Ensures snippet objects are wrapped in root XML elements
   def enclose
     self.set_type
@@ -84,19 +84,19 @@ class FileMaker::Snippet
     @text.lstrip!
     @text
   end
-  
+
   # Prints snippet as text as would use in clipboard
   def to_xml
     self.enclose
     @text.lstrip!
     @text
   end
-  
+
   # Appends text to @text
   # @param [String] text XML text (presumably in fmxmlsnippet format)
   # @return [String] New values of @text
   def append(text)
     @text << text
   end
-    
+
 end

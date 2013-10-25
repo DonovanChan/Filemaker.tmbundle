@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby -KU
+#!/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby -KU
 # encoding: UTF-8
 #
 # fmsnippet_layout.rb - helps manipulate and construct fmxmlsnippets for layouts
@@ -31,7 +31,7 @@ class FileMaker::Snippet
     doc = REXML::Document.new(self.to_s)
     doc.elements.to_a("//Object").reduce([]){|memo,e| memo << e.attributes['name'] }
   end
-  
+
   def extract_object_css
     doc = REXML::Document.new(self.to_s)
     doc.elements.to_a("//LocalCSS").reduce([]){|memo,e| memo << e.text.lstrip }
@@ -74,12 +74,12 @@ class FileMaker::Snippet
     }.merge(options.delete_blank)
     options[:fieldHeight] ||= options[:fontSize].to_i + 10
     options[:marginTop] ||= 2
-    
+
     # Absolute measurements
     @boundTop = @boundBottom.nil? ? 0 : @boundBottom.to_i + options[:marginTop].to_i
     @boundBottom = @boundTop + options[:fieldHeight].to_i
     @boundLeft = options[:fieldLeft]
-    
+
     # Relative measurements (used when contained by parent object)
     if options[:fieldTop].nil?
       options[:fieldTop] = @boundTop
@@ -111,7 +111,7 @@ class FileMaker::Snippet
     @text << xml
     xml
   end
-  
+
   # Constructs layout field object with label and appends to @text
   def layoutFieldWithLabel(fieldOptions,labelText,labelOptions={},labelMarginRight = 11)
     field = self.layoutField(fieldOptions)
@@ -122,7 +122,7 @@ class FileMaker::Snippet
     }.merge(labelOptions.delete_blank)
     self.layoutText(labelText,labelOptions)
   end
-    
+
   # Constructs layout text object and appends to @text
   # @param [String] text String to display
   # @param [Hash] options Hash containing text object attributes
@@ -178,7 +178,7 @@ class FileMaker::Snippet
     @text << xml
     xml
   end
-  
+
   # Constructs layout field object with label and assigns script to field. Appends resulting XML to @text.
   # @option (see #layoutField)
   # @option options [String] :scriptID FileMaker's internal ID for script. You'll need to get this off of the clipboard.
@@ -198,18 +198,18 @@ class FileMaker::Snippet
       :fieldLeft => 0,
       :objectname => nil
     })
-    
+
     # Prevent field from getting added to @text (I know, this is ugly)
     textOrig = @text.dup
     field = self.layoutField(fieldOptions)
     @text = textOrig
-    
+
     if options[:fieldTop].nil?
       fieldBottom = @boundBottom
     else
       fieldBottom = options[:fieldTop].to_i + options[:fieldHeight].to_i
     end
-    
+
     template = %q{
 		<Object type="GroupButton" key="" LabelKey="0" name="<%= options[:objectName] %>" flags="" rotation="0">
 			<Bounds top="<%= options[:fieldTop] || @boundTop %>" left="<%= options[:fieldLeft] %>" bottom="<%= fieldBottom %>" right="<%= options[:fieldLeft].to_i + options[:fieldWidth].to_i %>"/>
@@ -226,7 +226,7 @@ class FileMaker::Snippet
     @text << xml
     xml
   end
-    
+
   # Constructs layout field object with label and assigns script to field. Appends resulting XML to @text.
   # @option (see #layoutFieldButton)
   # @option options [Integer] :rowCount Number of rows to generate
@@ -257,5 +257,5 @@ class FileMaker::Snippet
     end
     self.to_xml
   end
-    
+
 end

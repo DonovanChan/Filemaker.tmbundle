@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby -KU
+#!/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby -KU
 # encoding: UTF-8
 #
 # calculation.rb - Manipulates FileMaker calculations
@@ -333,7 +333,7 @@ Let ( [
   )
 )
 ~~~~
-  
+
 }
 command :move_delimiters_to_beginning do |text|
   begin
@@ -390,7 +390,7 @@ Let ( [
   )
 )
 ~~~~
-  
+
 }
 command :move_delimiters_to_end do |text|
   begin

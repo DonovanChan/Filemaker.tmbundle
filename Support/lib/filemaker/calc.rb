@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby -KU
+#!/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby -KU
 # encoding: UTF-8
 #
 # fmcalc.rb - manipulates FileMaker calculations
@@ -23,7 +23,7 @@
 
 # Manipulates FileMaker calculations
 module FileMaker::Calc
-  
+
   # here = File.dirname(__FILE__)
   # require "#{here}/comments.rb"
   # include Comments
@@ -40,7 +40,7 @@ module FileMaker::Calc
         string.class == String
     end
   end
-  
+
   # Extracts names of functions used in text
   # @param [String] text Calculation containing function names to extract
   # @return [Array] Names of functions in text
@@ -156,7 +156,7 @@ module FileMaker::Calc
     calculation = array.join("\n")
     calculation.gsub('::93::',']').gsub('::59::',';')
   end
-  
+
   # Returns list of appended lines as List( ) calculation
   # @param [String] calculation Calculation to be converted
   # @return [String] Calculation wrapped in List( ) function with any trailing ampersand (&) on a line replaced with a semi-colon (;)
@@ -167,7 +167,7 @@ module FileMaker::Calc
     calculation.gsub!(/&\s*$/,";")
     return "List (\n  #{calculation}\n)"
   end
-  
+
   # Escapes and quotes text for use as literal string in FileMaker
   def self.quote(text)
     text.gsub!(/"/,'\\"')
@@ -175,7 +175,7 @@ module FileMaker::Calc
     text.gsub!(/¶/,'\\¶')
     '"' + text + '"'
   end
-  
+
   # Converts literal text into List( ) statement. Ensures blank lines are preserved exactly.
   # @example
   #   string_to_list("Oakland\n\nPortland") # => "List (\n\t\"Oakland\" & ¶ ;\n\t\"Portland\"\n)"
@@ -190,7 +190,7 @@ module FileMaker::Calc
     end
     %Q!List (\n\t#{lines.join(" ;\n\t")}\n)!
   end
-  
+
   # Converts literal text into List( ) statement. Adds space to blank lines so that List( ) function reads cleanly.
   # @example
   #   string_to_list_readable("Oakland\n\nPortland") # => "List (\n\t\"Oakland\" ;\n\t" " ;\n\t"Portland\"\n)"
@@ -202,6 +202,6 @@ module FileMaker::Calc
     end
     %Q!List (\n\t#{lines.join(" ;\n\t")}\n)!
   end
-  
-  
+
+
 end

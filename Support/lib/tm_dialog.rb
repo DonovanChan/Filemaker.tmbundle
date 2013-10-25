@@ -1,14 +1,14 @@
-#!/usr/bin/env ruby
+#!/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby ruby
 #
 # tm_dialog.rb - provides dialogs using CoacoaDialog
 #
 # See http://cocoadialog.sourceforge.net/documentation.html#executing for documentation
 
 class TM_Dialog
-  
+
   def initialize
   end
-  
+
   def cocoa_dialog_command
     support_path = "/Applications/TextMate.app/Contents/SharedSupport/Support"
     "#{support_path}/bin/CocoaDialog.app/Contents/MacOS/CocoaDialog"
@@ -81,9 +81,9 @@ end
 # Dialog methods taken from https://github.com/pyrat/ruby-on-rails-tmbundle/blob/96827250f706571b3de4324fbe33bb71235dc331/Support/lib/rails/text_mate.rb
 #
 # Copyright (c) 2006 syncPEOPLE, LLC.
-# 
+#
 # Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-# 
+#
 # The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-# 
+#
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

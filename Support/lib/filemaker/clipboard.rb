@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby
+#!/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby ruby
 # encoding: UTF-8
 #
 # clipboard.rb - helps get and put FileMaker objects on the clipboard

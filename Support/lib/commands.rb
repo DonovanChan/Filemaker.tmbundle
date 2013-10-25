@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby -KU
+#!/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby -KU
 # encoding: UTF-8
 #
 # commands.rb - Allows for easy mapping of metadata to methods
@@ -27,17 +27,17 @@ $LOAD_PATH.unshift(gem_path + '/kramdown/lib')
 require 'kramdown.rb'
 
 module Commands
-  
+
   attr_reader :commands
-  
+
   def self.desc(description)
     @next_desc = description
   end
-  
+
   def self.doc(documentation)
     @next_doc = process_doc(documentation)
   end
-  
+
   def self.command(name, &blk)
     @commands ||= {}
     @commands[name] = {
@@ -46,7 +46,7 @@ module Commands
       :documentation => Kramdown::Document.new(@next_doc, :coderay_tab_width => 4)
     }
   end
-  
+
   def self.call(name,*args)
     @commands[name][:block].call(*args)
   end
@@ -54,23 +54,23 @@ module Commands
   def self.description(name)
     @commands[name][:description]
   end
-  
+
   def self.documentation(name)
     @commands[name][:documentation]
   end
-  
+
   def self.process_doc(documentation)
     return '' unless documentation
     convert_tabs(documentation,2)
   end
-  
+
   private
-  
+
   def self.convert_tabs(text,tab_width)
     # text.gsub(/^( {2})+/) { |spaces| "\t" * (spaces.length / tab_width) }
     text.gsub(/(?:^|\G) {#{tab_width}}/m,"\t")
   end
-  
+
 end
 
 

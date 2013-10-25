@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby -KU
+#!/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby -KU
 # encoding: UTF-8
 #
 # clipboard_generation.rb - Builds FileMaker fmxmlsnippets
@@ -53,8 +53,8 @@ doc %Q{
 ## Array to Fields
 
 ### Description
-Generates FileMaker snippet of Fields (to be pasted into any table).  
-Uses selected text or entire document.  
+Generates FileMaker snippet of Fields (to be pasted into any table).
+Uses selected text or entire document.
 
 ### Example Usage
 Copy the lines below into a document and run the command again to see it work.
@@ -106,8 +106,8 @@ doc %Q{
 ## Array to Layout Fields
 
 ### Description
-Generates FileMaker snippet of field layout objects (to be pasted onto any layout).  
-Uses selected text or entire document.  
+Generates FileMaker snippet of field layout objects (to be pasted onto any layout).
+Uses selected text or entire document.
 
 ### Compatibility
 FileMaker 12 or newer
@@ -164,9 +164,9 @@ doc %Q{
 ## Array to Layout Fields Labeled
 
 ### Description
-Generates FileMaker snippet of field layout objects (to be pasted onto any layout).  
-Each field is pasted along with label specified in array.  
-Uses selected text or entire document.  
+Generates FileMaker snippet of field layout objects (to be pasted onto any layout).
+Each field is pasted along with label specified in array.
+Uses selected text or entire document.
 
 ### Compatibility
 FileMaker 12 or newer
@@ -222,9 +222,9 @@ doc %Q{
 ## Array to Layout Field Buttons
 
 ### Description
-Generates FileMaker snippet of field layout objects (to be pasted onto any layout).  
-Each field is pasted with an optional Perform Script button action.  
-Uses selected text or entire document.  
+Generates FileMaker snippet of field layout objects (to be pasted onto any layout).
+Each field is pasted with an optional Perform Script button action.
+Uses selected text or entire document.
 
 ### Compatibility
 FileMaker 12 or newer
@@ -319,7 +319,7 @@ Contact\tTitle\t"Flinstone"\t$_rep
 
 ### Tips
 #{tips}
-  
+
 }
 command :array_to_set_field do |paramArray|
   begin
@@ -376,7 +376,7 @@ $$_global\t"CONTACT"\t23
 command :array_to_set_variable do |paramArray|
   begin
     doc = Snippet.new
-    paramArray.split(/\n/).each { |row| 
+    paramArray.split(/\n/).each { |row|
       col = row.split(/\t/)
       name = col[0]
       calc = col[1]
@@ -456,9 +456,9 @@ doc %Q{
 ## Array to Sort Script Steps with Tests
 
 ### Description
-Generates FileMaker snippet of Sort script steps.  
-Each sort step is preceded by an Else If statement.  
-Dialogs are suppressed by default.  
+Generates FileMaker snippet of Sort script steps.
+Each sort step is preceded by an Else If statement.
+Dialogs are suppressed by default.
 Uses selected text or entire document.
 
 ### Compatibility
@@ -537,10 +537,10 @@ doc %Q{
 ## Array to Field Grid
 
 ### Description
-Generates FileMaker snippet of Field layout objects.  
-Creates grid of fields with specified dimensions and spacing.  
-Each field is pasted with an optional Perform Script button action.  
-Uses selected text or entire document.  
+Generates FileMaker snippet of Field layout objects.
+Creates grid of fields with specified dimensions and spacing.
+Each field is pasted with an optional Perform Script button action.
+Uses selected text or entire document.
 
 ### Compatibility
 FileMaker 12 or newer

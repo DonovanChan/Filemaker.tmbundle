@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby -KU
+#!/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby -KU
 # encoding: UTF-8
 #
 # help_function_external.rb
@@ -25,16 +25,16 @@
 module FileMaker::FMHelp
 
   scbase = "http://www.360works.com/plugins/SuperContainer/plugin-documentation.html"
-  
+
   # Searches EXTERNAL_FUNCTION_URLS for key matching query or containing query within '(' and ')'. Returns url to page for that entry. Ignores case and whitespace in query.
   #   get_function_doc('currenttime') = 'http://www.filemaker.com/12help/html/func_ref2.32.24.html#1052625'
-  #   get_function_doc('Get(CurrentTime)') = 'http://www.filemaker.com/12help/html/func_ref2.32.24.html#1052625'  
+  #   get_function_doc('Get(CurrentTime)') = 'http://www.filemaker.com/12help/html/func_ref2.32.24.html#1052625'
   def self.get_external_function_doc(query)
     query.gsub!(/\s/,'')
     query.downcase!
     EXTERNAL_FUNCTION_URLS[query] || EXTERNAL_FUNCTION_URLS.select{|key,value| key =~ /\(#{query}\)/ }.first.to_a[1]
   end
-  
+
   EXTERNAL_FUNCTION_URLS = {
     "fmsauc_version"             => "file:///" + ENV["TM_BUNDLE_SUPPORT"] + "/AutoUpdate.html#FMSAUC_Version",
     "fmsauc_findplugin"          => "file:///" + ENV["TM_BUNDLE_SUPPORT"] + "/AutoUpdate.html#FMSAUC_FindPlugin",

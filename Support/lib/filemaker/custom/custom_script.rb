@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby -KU
+#!/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby -KU
 # encoding: UTF-8
 #
 # custom_script.rb - custom logic for manipulating FileMaker scripts.
@@ -23,7 +23,7 @@
 
 # Handles actions specific to scripts. Switch out this module to suite your own conventions.
 module FileMaker::FMScriptCustom
-  
+
   # here = File.dirname(__FILE__)
 
   # Delimiter prepended to parameters in script names and documentation to indicate they're optional
@@ -76,7 +76,7 @@ module FileMaker::FMScriptCustom
     return nil unless params
     params[1].split(/;/).map{|x| x.strip}
   end
-  
+
   # Returns array of script result parameters in text
   # @param [String] scriptName String containing result parameters
   # @return [Array] Each output parameter
@@ -88,7 +88,7 @@ module FileMaker::FMScriptCustom
     return nil unless params
     params[1].split(/;/).map{|x| x.strip}
   end
-  
+
 end
 
 module FileMaker

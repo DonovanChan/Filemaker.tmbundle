@@ -86,6 +86,7 @@ module FileMaker::Clipboard
 
   # Loads contents of Snippet object to FileMaker's clipboard
   # @return [String,nil] XML that was loaded to the clipboard. Returns nil in case of error.
+  # @todo return stderr better. See executor.rb for example.
   def self.set(object)
     begin
       text = self.escape_for_shell(object.to_xml)

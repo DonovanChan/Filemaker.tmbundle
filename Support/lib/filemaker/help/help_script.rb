@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby -KU
+#!/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby -KU
 # encoding: UTF-8
 #
 # help_script.rb
@@ -37,7 +37,7 @@ module FileMaker::FMHelp
     query.downcase!
     SCRIPT_URLS[query] || SCRIPT_URLS.select{|key,value| key.start_with?(query) }.first.to_a[1] #|| SCRIPT_INDEX_URL
   end
-  
+
   # Generated using following shell command
   #   ruby -e 'STDOUT << "FUNCTION_URLS = {\n" << `curl -s http://www.filemaker.com/12help/html/help_script_alpha.html`.scan(%r{<div class=".*?"><a href="(.*?)" name=".*?">(.*?)</a></div>}).map { |e| "  \"#{e[1].downcase.gsub(/\s/, nil.to_s)}\"".ljust(30) + " => fmbase + \"#{e[0]}\"" }.join(",\n") << "\n}\n"'
   SCRIPT_URLS = {

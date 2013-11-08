@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby -KU
+#!/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby -KU
 # encoding: UTF-8
 #
 # fmsnippet_layout.rb - helps manipulate and construct fmxmlsnippets for layouts
@@ -25,14 +25,14 @@ require 'erb'
 require 'rexml/document'
 
 class FileMaker::Snippet::Pre12
-  
+
   attr_accessor :type, :text
-  
+
   def initialize(xmlText='')
     @text = xmlText
     @isPartial = true # unless xmlText =~ /\<#{self.superclass.const_get(:ROOT)}[\s\>]/u
   end
-  
+
   def to_s
     Snippet.new(self.text).to_s
   end
@@ -96,7 +96,7 @@ class FileMaker::Snippet::Pre12
     @text << tpl.result(binding)
     {:top => @boundTop, :left => fieldLeft}
   end
-  
+
   # Constructs layout field object with label and appends to @text
   def layoutFieldWithLabel(fieldOptions,labelText,labelOptions={},labelOuterMargin = 11)
     bounds = self.layoutField(fieldOptions)
@@ -107,7 +107,7 @@ class FileMaker::Snippet::Pre12
     }.merge(labelOptions.delete_blank)
     self.layoutText(labelText,labelOptions)
   end
-    
+
   # Constructs layout text object and appends to @text
   # @param [String] text String to display
   # @param [Hash] options Hash containing text object attributes
@@ -164,5 +164,5 @@ class FileMaker::Snippet::Pre12
     tpl = ERB.new(template, 0, '%<>')
     @text << tpl.result(binding)
   end
-    
+
 end

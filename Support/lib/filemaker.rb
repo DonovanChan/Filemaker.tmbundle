@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby -KU
+#!/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby -KU
 # encoding: UTF-8
 #
 # filemaker.rb - Parent for all FileMaker-related classes
@@ -22,12 +22,12 @@
 #
 
 class Hash
-  
+
   # Removes pairs in hash with empty values
   def delete_blank
     delete_if{|k, v| v.to_s.empty? or v.instance_of?(Hash) && v.delete_blank.empty?}
   end
-  
+
 end
 
 def Boolean(text)
@@ -37,25 +37,25 @@ def Boolean(text)
 end
 
 module FileMaker
-  
+
   PATH_BASE = File.dirname(__FILE__)
   PATH_PASTE = "#{PATH_BASE}/PasteSnippet.applescript"
   PATH_CUSTOM = "#{PATH_BASE}/filemaker/custom"
 
   # Change to 'true' to see backtrace with error messages
   DEBUG_ON = Boolean(ENV['TM_DEBUG_ON']) || false
-  
+
   require "#{PATH_BASE}/filemaker/calc.rb"
   require "#{PATH_BASE}/filemaker/fmsnippet.rb"
-  
+
   # Customizations
   require "#{PATH_BASE}/filemaker/custom/custom_function.rb"
   require "#{PATH_BASE}/filemaker/custom/custom_script.rb"
 
   # Clipboard interaction
   require "#{PATH_BASE}/filemaker/clipboard.rb"
-  
+
   # Help
   require "#{PATH_BASE}/filemaker/help.rb"
-  
+
 end

@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby -KU
+#!/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby -KU
 # encoding: UTF-8
 #
 # command_docs.rb - Stores documenation for bundle commands
@@ -26,7 +26,7 @@ require base_path + '/commands.rb'
 
 class Commands
 
-  
+
   desc "Loads function to clipboard as snippet"
   command :load_function do |text,prefixToPrototype|
     begin
@@ -40,5 +40,5 @@ class Commands
     	puts e.message
     end
   end
-  
+
 end

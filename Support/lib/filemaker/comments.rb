@@ -1,15 +1,15 @@
-#!/usr/bin/env ruby -KU
+#!/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby -KU
 # encoding: UTF-8
 
 # Replaces high ascii characters with placeholders to avoid encoding issues when sending text through shell or AppleScript
 class Preserve
   attr_accessor :legend
-    
+
   def initialize
     @legend = {}
     @counter = 0
   end
-  
+
   def tag(content)
     "xxx#{content}xxx"
   end
@@ -25,7 +25,7 @@ class Preserve
       tag(store(match))
     end
   end
-  
+
   def remove(text,regex)
     remove!(text.dup,regex)
   end
@@ -36,7 +36,7 @@ class Preserve
     end
     text
   end
-  
+
   def restore(text)
     restore!(text.dup)
   end

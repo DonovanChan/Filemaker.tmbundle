@@ -48,6 +48,7 @@
 # Version 3.2 11/20/2011   Donovan Chandler: (Added space before separator characters)
 # Version 3.23 11/21/2011  Donovan Chandler: (Added arguments for indent width and soft tabs)
 # Version 3.24 11/21/2011  Donovan Chandler: (Fixed bug with whitespace before ( and [ )
+# Version 3.25 11/07/2013  Donovan Chandler: (Fixed bug where ~% as let variable would hang script)
 # ------------------------ END ------------------------
 #
 #
@@ -69,7 +70,7 @@
 #
 #   substitute(string1,
 #              string2,
-#              substitute(string3, 
+#              substitute(string3,
 #                         string4,
 #                         substitute(string5, string6, string7)
 #              )
@@ -83,7 +84,7 @@
 #      string2,
 #      substitute(
 #         string3,
-#         string4, 
+#         string4,
 #         substitute(string5, string6, string7)
 #      )
 #   )
@@ -150,7 +151,7 @@ $defaultwraplength_includingindentation=1000000;
 
 $minwraplength=30;
 $maxwraplength=1000000;
-$defaultwraplength=70; 
+$defaultwraplength=70;
 
 # Next, we adjust the user's specified parameters, if necessary,
 # such that they conform to our specifications.  (The interface, e.g.
@@ -188,7 +189,7 @@ $mindepthtoaccommodate=int(($wraplength-$reasonable_length)/$indentwidth);
 # Because it would not make sense for the "non whitespace" length to be
 # greater than the "wrap length", we set a total clause length here based on the minimum of those two
 
-$maxpotentialclauselength=min($wraplength_includingindentation, $wraplength); 
+$maxpotentialclauselength=min($wraplength_includingindentation, $wraplength);
 
 # We determine here the maximum number of indent levels our result calc will
 #  need to accommodate. We ensure this is at least the number of indent levels
@@ -207,11 +208,13 @@ $maxpotentialindents = max (int (($wraplength_includingindentation-$maxpotential
 sub formatcalc {
     if ($stringsuccess = &removestrings) {
         &prepstring;
+        &removeoddballs;
         &parsecalc;
         &combineparens;
         &indent;
         &replacestrings;
         &returntostring;
+        &restoreoddballs;
     } else {
         &restorespecialchars;
     }
@@ -226,15 +229,26 @@ sub prepstring {
     $calc =~ s/\n/ /g;
 
     # Surround the string with newline characters
-    $calc = "\n$calc\n";    
-    
+    $calc = "\n$calc\n";
+
 }
 
 
 sub restorespecialchars {
-    # Turn all "!=" operators, which the form changed from a user's 
+    # Turn all "!=" operators, which the form changed from a user's
     # original "­" character, into "<>".
     $calc =~ s/\!\=/\<\>/g;
+
+}
+
+sub removeoddballs {
+    # Replace % character with placeholder
+    $calc =~ s/\%/zxzxy/;
+}
+
+sub restoreoddballs {
+    # Return % characters
+    $calc =~ s/zxzxy/\%/;
 }
 
 
@@ -273,20 +287,20 @@ sub removestrings {
     $leftpos=-1;
 
     # Find the next potential "left" quote or c or c++ comment, whichever comes first
-    while (($leftpos = min_but_not_blank(min_but_not_blank((index $calc2, 
+    while (($leftpos = min_but_not_blank(min_but_not_blank((index $calc2,
         "\"", $leftpos+1),(index $calc2, "\/\/", $leftpos+1)),
         (index $calc2, "\/\*", $leftpos+1)))>-1) {
 
         $rightpos = $leftpos;
 
-        # Find the next potential "right" tag, ignoring any 
+        # Find the next potential "right" tag, ignoring any
         # escaped quotes in between
-        
-                   
+
+
         # If we're dealing with a left quotation mark, find the right one.
         # To do this, find the next quotation mark that's not escaped
         if (((substr $calc2, $leftpos,1) cmp "\"")==0) {
-                
+
              # Get rid of any double backslashes within the quotes so we
              # don't mistake an escaped quotation mark for a quotation
              # mark following an escaped backslash
@@ -295,20 +309,20 @@ sub removestrings {
                  $doublebackslash_pos = (index $calc2, "\\\\", 0);
                  $calc2 = (substr $calc2, 0, $doublebackslash_pos) . "aa" . (substr $calc2, $doublebackslash_pos + 2, length $calc2);
              }
-                 
-             
+
+
             # Now find a right quote which is not preceded immediately
             # by a backslash.
             $nextpos = $rightpos;
-            while((($nextpos = (index $calc2, "\"", $nextpos+1))>=0) && 
+            while((($nextpos = (index $calc2, "\"", $nextpos+1))>=0) &&
              ((substr $calc2, $nextpos-1,1) cmp "\\")==0) {
                 $rightpos = $nextpos;
                 $nextpos = ($nextpos + 1);
             }
             $rightpos = (index $calc2, "\"", $rightpos+1);
         }
-        
-        
+
+
         # If we're dealing with a slash and apostrophe, find the
         #   end of the comment, which is an apostrophy and then a slash
         elsif(((substr $calc2, $leftpos,2) cmp "\/\*")==0) {
@@ -321,7 +335,7 @@ sub removestrings {
 
             if ($rightpos == -1)
             {$rightpos = length $calc2;}
-    
+
         }
         else
         {
@@ -329,8 +343,8 @@ sub removestrings {
             return 0;
         }
 
-        # If there isn't such a right quote or comment tag, 
-        # return FALSE; otherwise push 
+        # If there isn't such a right quote or comment tag,
+        # return FALSE; otherwise push
         # the string between the tags onto a stack and replace it with
         # a string of q's
         if ($rightpos == -1) {
@@ -339,21 +353,21 @@ sub removestrings {
 
             push @stringstack, substr $calc3, $leftpos,
                 $rightpos-$leftpos+1;
-            $calc2 = (substr $calc2, 0, $leftpos) . "\"" . ("q" x ($rightpos-$leftpos-1)) . "\"" . (substr $calc2, $rightpos+1, length $calc2);   
+            $calc2 = (substr $calc2, 0, $leftpos) . "\"" . ("q" x ($rightpos-$leftpos-1)) . "\"" . (substr $calc2, $rightpos+1, length $calc2);
             $leftpos=$rightpos;
         }
-        
+
         elsif(((substr $calc2, $leftpos,2) cmp "\/\*")==0) {
             push @stringstack, substr $calc3, $leftpos, $rightpos-$leftpos+2;
-            $calc2 = (substr $calc2, 0, $leftpos) . "%" . ("r" x ($rightpos-$leftpos)) . "%" . (substr $calc2, $rightpos+2, length $calc2);   
+            $calc2 = (substr $calc2, 0, $leftpos) . "%" . ("r" x ($rightpos-$leftpos)) . "%" . (substr $calc2, $rightpos+2, length $calc2);
             $leftpos=$rightpos+1;
         }
 
         elsif(((substr $calc2, $leftpos,2) cmp "\/\/")==0) {
             push @stringstack, substr $calc3, $leftpos, $rightpos-$leftpos;
-            $calc2 = (substr $calc2, 0, $leftpos) . "?" . ("s" x ($rightpos-$leftpos-2)) . "?" . (substr $calc2, $rightpos, length $calc2);   
+            $calc2 = (substr $calc2, 0, $leftpos) . "?" . ("s" x ($rightpos-$leftpos-2)) . "?" . (substr $calc2, $rightpos, length $calc2);
             $leftpos=$rightpos;
-    
+
         }
     }
 
@@ -366,7 +380,7 @@ sub parsecalc {
 
     # replace wierd space with normal one
     $calc =~ s/Ê/ /g;
-    
+
     # Parse into tokens based on symbols
     $calc =~ s/\"([^\"]*)\"/\n\"$1\"\n/g;
     $calc =~ s/\?([^\?]*)\?/\n\?$1\?\n/g;
@@ -374,7 +388,7 @@ sub parsecalc {
 
     $calc =~ s/\/\*(((\*(?!\/))*([^\*])*)*)\*\//\n\/\*$1\*\/\n/g;
 
-    $calc =~ s/\/\/([^\n]*)\n/\n\/\/$1\n/g;    
+    $calc =~ s/\/\/([^\n]*)\n/\n\/\/$1\n/g;
 
     $calc =~ s/\s*([\^\*\/\+\-\<\>\=\&\)\]\;])\s*/\n$1\n/g;
     $calc =~ s/\s*([\<\>\=])\s*([\<\>\=])\s*/\n$1$2\n/g;
@@ -431,8 +445,8 @@ sub combineparens {
         $depth4=scalar s/\]//g;
         $depth = $depth1 + $depth2 - $depth3 - $depth4;
 
-    
-    
+
+
         # Get position of next relevant right paren; see if it is a
         # match for the current left paren, and whether the whole clause
         # will fit on one line
@@ -442,25 +456,25 @@ sub combineparens {
             # no clause will be indented longer than half of the wraplength
             $substring = (substr $calc, $leftpos, ($rightpos-$leftpos+1));
             $indents = mod ($indentwidth * $depth, $maxpotentialindents * $indentwidth);
-    
+
             # If the clause won't fit on one line, including a following comma
             # or argument,  skip to next left paren
             if (((length $substring) > ($maxpotentialclauselength - 4)) || ((length $substring) > ($wraplength_includingindentation - 4 - $indents))) {
                 last;
             }
-    
+
             # If the clause contains a comment, skip to next left paren
             if (((index $substring, "\?", 0) > 0) || ((index $substring, "\%", 0) > 0)) {
                 last;
             }
-    
+
             # If the clause is a full clause, e.g. parens match,
             # put it with the previous line; and go on to the next left
             # paren after the end of the clause; otherwise go on to next
             # right paren
-    
+
             $_=$substring;
-            $depth1=scalar s/\(//g;    
+            $depth1=scalar s/\(//g;
             $_=$substring;
             $depth2=scalar s/\[//g;
             $_=$substring;
@@ -468,7 +482,7 @@ sub combineparens {
             $_=$substring;
             $depth4=scalar s/\]//g;
             $depth2 = $depth1 + $depth2 - $depth3 - $depth4;
-    
+
             if ($depth2 == 0) {
                 $substring =~ s/\n/ /g;
                 $calc =  (substr $calc, 0, $leftpos) .  $substring . (substr $calc, $rightpos+1, length $calc);
@@ -511,52 +525,52 @@ sub indent {
     while ($i < scalar @calc) {
         $thistext = $calc[$i];
         $priortext = $calc[$i-1];
-    
+
         $_ = $priortext;
         s/ //g;
         $ptspacesremoved = $_;
         $ptfirstrealchar=substr $ptspacesremoved, 0, 1;
         $ptendsclause = (($ptfirstrealchar cmp "\)")==0) || (($ptfirstrealchar cmp "\]")==0);
-    
+
         $_ = $thistext;
         $tthasparen = m/[\(\)\[\]]/g;
-    
+
         $_ = $thistext;
         $ttiscomment = m/[\?\%]/g;
-    
+
         $_ = $priortext;
         $ptiscomment = m/[\?\%]/g;
-    
+
         $ptlength=length $priortext;
-        $ttlength=length $thistext;    
-    
+        $ttlength=length $thistext;
+
         $ttfirstchar=substr $thistext,0,1;
         $ptlastchar=substr $priortext, $ptlength-1,1;
         $ttlastchar=substr $thistext, $ttlength-1,1;
-    
+
         $ttiscloseparen = (($ttfirstchar cmp "\)")==0 || ($ttfirstchar cmp "\]")==0);
         $ptbeginsclause = (($ptlastchar cmp "\(")==0 || ($ptlastchar cmp "\[")==0);
 #       $ptendsarg = ((($ptlastchar cmp "\,")==0) || (($ptlastchar cmp "\;")==0)) ; removed comma in 3.1
         $ptendsarg = (($ptlastchar cmp "\;")==0);
         $ttbeginsclause = (($ttlastchar cmp "\(")==0 || ($ttlastchar cmp "\[")==0);
         $ttistoolong = ((($ptlength + 1 + $ttlength) > $wraplength_includingindentation) || (($ptlength - $spacesneeded + 1 + $ttlength) > $maxpotentialclauselength));
-    
+
         # If the clause should start a new line, determine how many
-        # spaces are needed before it, and place those spaces before 
+        # spaces are needed before it, and place those spaces before
         # the rest of the text
         if($ttiscomment || $ptiscomment || $ttiscloseparen || $ptbeginsclause || $ptendsarg || $ttbeginsclause || $ttistoolong || ($ptendsclause && $tthasparen) ) {
-            # The number of indents needed depends on the depth at the end 
-            # of the previous line; if the current line is a close paren, 
+            # The number of indents needed depends on the depth at the end
+            # of the previous line; if the current line is a close paren,
             # then it needs one less indent
-            $relevantdepth = $depth + ($ttiscloseparen? -1 : 0); 
+            $relevantdepth = $depth + ($ttiscloseparen? -1 : 0);
             $spacesneeded = mod ($indentwidth*$relevantdepth,$maxpotentialindents * $indentwidth);
             $spaces = ($softtabs==1 ? " " x $spacesneeded : "\t" x ($spacesneeded/$indentwidth));
-    
+
             $thistext = $spaces . $thistext;
-    
+
             $calc[$i] = $thistext;
             $i = $i + 1;
-    
+
             $_ = $thistext;
             $depth1=scalar s/\(//g;
             $_ = $thistext;
@@ -613,7 +627,7 @@ sub min_but_not_blank {
         if ($_[1] >=0) {return ($_[0] <= $_[1] ? $_[0] : $_[1]);}
         else {return $_[0];}
     }
-    else {return $_[1];} 
+    else {return $_[1];}
 }
 
 sub max {

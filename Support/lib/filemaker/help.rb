@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby -KU
+#!/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby -KU
 # encoding: UTF-8
 #
 # help.rb - accessing FileMaker help docs
@@ -47,14 +47,14 @@ module FileMaker::FMHelp
       when 3 then REFERENCE_URL
     end
   end
-  
+
   def self.get_doc(query)
     self.get_function_doc(query) ||
       self.get_script_doc(query) ||
       self.get_error_doc(query) ||
       REFERENCE_URL
   end
-  
+
   def self.get_doc_or_prompt(query)
     return self.prompt_for_query('',query.to_s) unless query
     self.get_function_doc(query.to_s) ||

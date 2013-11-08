@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby -KU
+#!/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby -KU
 # encoding: UTF-8
 #
 # help_error.rb
@@ -28,12 +28,12 @@ module FileMaker::FMHelp
 
   # Searches ERROR_URLS for key matching query. Returns url to page for that entry. Ignores whitespace in query.
   #   get_error_doc('-1') = 'http://www.filemaker.com/12help/html/error_codes.html#1030079'
-  #   get_function_doc('') = 'http://www.filemaker.com/12help/html/error_codes.html'  
+  #   get_function_doc('') = 'http://www.filemaker.com/12help/html/error_codes.html'
   def self.get_error_doc(query)
     query.strip!
     ERROR_URLS[query] #|| ERROR_BASE_URL
   end
-  
+
   # Generated using following shell command
   #   ruby -e 'STDOUT << "ERROR_URLS = {\n" << `curl -s http://www.filemaker.com/12help/html/error_codes.html`.scan(/<div class="td-tabledata"><a name="(.*?)">(.*?)<\/a><\/div>.*?<\/tr/m).map { |e| "  \"#{e[1]}\"".ljust(20) + " => ERROR_BASE_URL + \"\##{e[0]}\"" }.join(",\n") << "\n}\n"'
   ERROR_URLS = {

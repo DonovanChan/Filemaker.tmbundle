@@ -4,9 +4,10 @@
 <dict>
 	<key>content</key>
 	<string>Let ( [
-	${1:varName} = ${2:expression}
+	${1:~varName} = ${2:expression}${3: ;
+	${4:~varName2} = ${5:expression2}}
 	] ;
-	${3:calculation}
+	${6:calculation}
 )$0</string>
 	<key>name</key>
 	<string>Let</string>

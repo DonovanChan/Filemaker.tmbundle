@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>content</key>
+    <string>GetContainerAttribute ( ${1:sourceField} ; ${2:album|all|artist|audio|bitrate|composer|coverArt|coverArt|dpiHeight|dpiWidth|duration|externalFiles|externalFiles|externalSize|filename|fileSize|genre|height|image|internalSize|latitude|longitude|make|md5|model|orientation|photo|storageType|timestamp|title|track|transparency|transparency|width|year} )</string>
+    <key>tabTrigger</key>
+    <string>getcont</string>
+    <key>scope</key>
+    <string>source.filemaker</string>
+    <key>uuid</key>
+    <string/>
+  </dict>
+</plist>

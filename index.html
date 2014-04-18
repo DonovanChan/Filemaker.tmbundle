@@ -1,212 +1,136 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<!doctype html>
 <html>
   <head>
-    <meta charset='utf-8'>
-    <title>
-      DonovanChan/filemaker.tmbundle @ GitHub
-    </title>
-    <style type="text/css">
-body {
-      margin-top: 1.0em;
-      background-color: #e9c1a0;
-      font-family: Helvetica, Arial, FreeSans, san-serif;
-      color: #000000;
-    }
-    #container {
-      margin: 0 auto;
-      width: 700px;
-    }
-    h1 { font-size: 3.8em; color: #163e5f; margin-bottom: 3px; }
-    h1 .small { font-size: 0.4em; }
-    h1 a { text-decoration: none }
-    h2 { font-size: 1.5em; color: #163e5f; }
-    h3 { text-align: center; color: #163e5f; }
-    a { color: #163e5f; }
-    .description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
-    .download { float: right; }
-    pre { background: #000; color: #fff; padding: 15px;}
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    .footer { text-align:center; padding-top:30px; font-style: italic; }
-    </style>
-    <script type="text/javascript">
-
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-24772131-1']);
-    _gaq.push(['_trackPageview']);
-
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-
-    </script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>TextMate Bundle for FileMaker</title>
+    
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
   </head>
   <body>
-    <p>
-      <a href="http://github.com/DonovanChan/filemaker.tmbundle"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
-    </p>
-    <div id="container">
-      <div class="download">
-        <a href="http://github.com/DonovanChan/filemaker.tmbundle/zipball/master"><img border="0" width="90" src="http://github.com/images/modules/download/zip.png"></a> <a href="http://github.com/DonovanChan/filemaker.tmbundle/tarball/master"><img border="0" width="90" src="http://github.com/images/modules/download/tar.png"></a>
-      </div>
-      <h1>
-        <a href="http://github.com/DonovanChan/filemaker.tmbundle">filemaker.tmbundle</a> <span class="small">by <a href="http://github.com/DonovanChan">DonovanChan</a></span>
-      </h1>
-      <div class="description">
-        TextMate Support for FileMaker Pro
-      </div>
-      <p>
-        This is a bundle for use in TextMate (text editor for Mac OS). It adds functionality that supports development of FileMaker Pro databases.
-      </p>
-	  <p>
-		  <em>Sublime Text 2 users</em>, see the <a href="https://github.com/DonovanChan/filemaker.tmbundle/tree/SublimeText2">SublimeText2 branch</a>. Note, the Sublime Text 2 version currently only supports snippets and syntax highlighting.
-	  </p>
-      <p>
-        Become a FileMaker ninja with these tools in your belt!
-      </p>
-      <ul>
-        <li>Tab triggers for FileMaker functions
-        </li>
-        <li>Documentation for functions, script steps and error codes
-        </li>
-        <li>Commands
-          <ul>
-            <li>Manipulating/generating calculations
-            </li>
-            <li>Manipulating/generating FileMaker clipboard XML
-            </li>
-            <li>Extracting data from the DDR
-            </li>
-            <li>Extracting data from import.log files
-            </li>
-          </ul>
-        </li>
-        <li>Syntax highlighting
-          <ul>
-            <li>FileMaker
-            </li>
-            <li>FileMaker Clipboard
-            </li>
-            <li>FileMaker Log
-            </li>
-            <li>FileMaker Hash (Generated using #( ) custom function)
-            </li>
-          </ul>
-        </li>
-        <li>Code folding
-        </li>
-        <li>Help section
-        </li>
-		<li>Full documention on most commands (displayed when running command with empty input)
-		</li>
-      </ul>
-      <h2>
-        Dependencies
-      </h2>
-      <ul>
-        <li>TextMate (Available on OS X only. 30-day trial available)
-        </li>
-        <li>Ruby 1.8.7 or newer (should be installed by default on OS X)
-        </li>
-        <li>FileMaker Pro or FileMaker Pro Advanced
-        </li>
-      </ul>
-      <h2>
-        Installation
-      </h2>
-      <h4>
-        Simple Method
-      </h4>
-      <p>
-        See the <a href="http://youtu.be/uq8I1vvuBXg">installation video</a>.
-      </p>
-      <ol>
-        <li>Install <a href="http://macromates.com/">TextMate</a>
-        </li>
-        <li>Download the files. (<a href="http://github.com/DonovanChan/filemaker.tmbundle/zipball/master">zip</a> or <a href="http://github.com/DonovanChan/filemaker.tmbundle/tarball/master">tar</a> formats available)
-        </li>
-				<li>Uncompress/extract the package contents, if necessary.
-				</li>
-        <li>Rename the folder to “filemaker.tmbundle”
-        </li>
-        <li>Double-click on filemaker.tmbundle
-        </li>
-        <li>Get to work! TextMate just installed the bundle for you.
-        </li>
-      </ol>
-      <h4>
-        For Easy Updates
-      </h4>
-			<p>You can set up the bundle as a <a href="http://git-scm.com">Git</a> repository right where TextMate installs it. Here are the Terminal commands:</p>
+    <div class="wrapper">
+      <header>
+        <h1>TextMate Bundle for FileMaker</h1>
+        <p>TextMate Support for FileMaker Pro</p>
+        <p class="view"><a href="https://github.com/DonovanChan/Filemaker.tmbundle">View the Project on GitHub <small>donovanchan/filemaker.tmbundle</small></a></p>
+        <ul>
+          <li><a href="https://github.com/DonovanChan/Filemaker.tmbundle/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/DonovanChan/Filemaker.tmbundle/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/DonovanChan/Filemaker.tmbundle/fork">Fork On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h2>Features</h2>
+        <p>Add some secret weapons to your development in FileMaker Pro:</p>
+        <ul>
+          <li>Tab triggers for FileMaker functions
+          </li>
+          <li>Documentation for functions, script steps and error codes
+          </li>
+          <li>Commands
+            <ul>
+              <li>Manipulating/generating calculations
+              </li>
+              <li>Manipulating/generating FileMaker clipboard XML
+              </li>
+              <li>Extracting data from the DDR
+              </li>
+              <li>Extracting data from import.log files
+              </li>
+            </ul>
+          </li>
+          <li>Syntax highlighting
+            <ul>
+              <li>FileMaker
+              </li>
+              <li>FileMaker Clipboard
+              </li>
+              <li>FileMaker Log
+              </li>
+              <li>FileMaker Hash (Generated using #( ) custom function)
+              </li>
+            </ul>
+          </li>
+          <li>Code folding
+          </li>
+          <li>Help section
+          </li>
+          <li>Full documention on most commands (displayed when running command with empty input)
+          </li>
+        </ul>
 
-			<pre><code>mkdir -p ~/Library/Application\ Support/TextMate/Bundles
-cd ~/Library/Application\ Support/TextMate/Bundles
-git clone git://github.com/DonovanChan/filemaker.tmbundle.git "FileMaker.tmbundle"
-osascript -e 'tell app "TextMate" to reload bundles'</code></pre>
+        <h2>Dependencies</h2>
+        <ul>
+          <li>TextMate (text editor available on Mac OS only)
+          </li>
+          <li>Ruby 1.8.7 or newer (should be installed by default on OS X)
+          </li>
+          <li>FileMaker Pro or FileMaker Pro Advanced
+          </li>
+        </ul>
+        <h3>Windows Users</h3>
+        <p>Check out my <a href="https://github.com/DonovanChan/FileMaker">Sublime Text package</a> for a cross-platform alternative. Sublime Text is actually a more elegant text editor in my opinion. The package supports the syntax highlighting and snippets, but not the commands for clipboard interaction and code generation, unfortunately.</p>
 
-			<p>The TextMate 2 pre-release stores bundles in a different place, however:</p>
+        <h2>Installing</h2>
 
-			<pre><code>mkdir -p ~/Library/Application\ Support/Avian/Bundles
-cd ~/Library/Application\ Support/Avian/Bundles
-git clone git://github.com/DonovanChan/filemaker.tmbundle.git "FileMaker.tmbundle"</code></pre>
+        <h3>For easy installation</h3>
 
-      <h2>
-        License
-      </h2>
-			<p>Copyright 2011-2012  Donovan Chandler, Beezwax Datatools, Inc.
-			donovan_c@beezwax.net
-			</p>
-			<p>This program is free software: you can redistribute it and/or modify
-			it under the terms of the GNU General Public License as published by
-			the Free Software Foundation, either version 3 of the License, or
-			(at your option) any later version.
-			</p>
-			<p>This program is distributed in the hope that it will be useful,
-			but WITHOUT ANY WARRANTY; without even the implied warranty of
-			MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-			GNU General Public License for more details.
-			</p>
-			<p>You should have received a copy of the GNU General Public License
-			along with this program.  If not, see <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.
-			</p>
-      <h2>
-        Authors
-      </h2>
-      <p>
-        Donovan Chandler (<a href="mailto:donovan_c@beezwax.net">donovan_c@beezwax.net</a>)
-      </p>
-      <p>
-        Previous incarnations by <a href="http://github.com/petrowsky">Matt Petrowsky</a> and <a href="http://code.google.com/p/filemaker-textmate-bundle/">Charles Ross</a>
-      </p>
-      <p>
-        View issues <a href="https://github.com/DonovanChan/filemaker.tmbundle/issues">here</a> on github to report a bug or request new features.
-      </p>
-      <h2>
-        Get Involved
-      </h2>
-      <p>
-        Feel free to <a href="https://github.com/DonovanChan/filemaker.tmbundle/issues?direction=desc&sort=created&state=open">submit issues</a> on github or create a fork of your own. You can also email me directly (see Contact section).
-      </p>
-			<p>
-				I'd love to see these commands extended to Windows users or any other text editor. Please let me know if you're interested in contributing to that effort.
-      <h2>
-        Help and FAQ
-      </h2>
-      <p>
-        There's a Help section provided in the bundle. (Under Bundles/FileMaker/Help menu option.)
-      </p>
-      <p>Also check out the <a href="https://github.com/DonovanChan/filemaker.tmbundle/wiki">project wiki</a>. It's young but growing!
-      </p>
-      <h2>
-        Contact
-      </h2>
-      <p>
-        Donovan Chandler (<a href="mailto:donovan_c@beezwax.net">donovan_c@beezwax.net</a>)
-      </p>
-      <div class="footer">
-        get the source code on GitHub : <a href="http://github.com/DonovanChan/filemaker.tmbundle">DonovanChan/filemaker.tmbundle</a>
-      </div>
+        <ol>
+        <li>Install <a href="http://macromates.com/">TextMate</a></li>
+        <li>Download these files. (<a href="http://github.com/DonovanChan/filemaker.tmbundle/zipball/master">zip</a> and <a href="http://github.com/DonovanChan/filemaker.tmbundle/tarball/master">tar</a> formats available)</li>
+        <li>Uncompress/extract the package contents, if necessary.</li>
+        <li>Rename the folder to &#8220;FileMaker.tmbundle&#8221;. (You will have to remove some metadata from the name.)</li>
+        <li>Double-click on the file.</li>
+        </ol>
+
+        <p>That&#8217;s it! TextMate will install the bundle automatically into &#8220;~/Library/ApplicationSupport/TextMate/Bundles&#8221;</p>
+
+        <h3>For easy upgrades</h3>
+
+        <p>You can set up the bundle as a <a href="http://git-scm.com">Git</a> repository right where TextMate installs it. Just copy the appropriate commands below into your Terminal.</p>
+        <p><strong>TextMate 1</strong></p>
+        <pre><code>mkdir -p ~/Library/Application\ Support/TextMate/Bundles
+        cd ~/Library/Application\ Support/TextMate/Bundles
+        git clone git://github.com/DonovanChan/filemaker.tmbundle.git &quot;FileMaker.tmbundle&quot;
+        osascript -e &apos;tell app &quot;TextMate&quot; to reload bundles&apos;</code></pre>
+        <p><strong>TextMate 2</strong></p>
+        <pre><code>mkdir -p ~/Library/Application\ Support/Avian/Bundles
+        cd ~/Library/Application\ Support/Avian/Bundles
+        git clone git://github.com/DonovanChan/filemaker.tmbundle.git &quot;FileMaker.tmbundle&quot;</code></pre>
+
+        <h2>Updating</h2>
+
+        <p>If you simply downloaded the zip files, you&#8217;ll need to download and move them again. If you cloned the repository, you can pull down the latest updates like this:</p>
+        <p><strong>TextMate 1</strong></p>
+        <pre><code># Update FileMaker bundle for TextMate 1
+        cd ~/Library/Application\ Support/TextMate/Bundles/filemaker.tmbundle
+        git pull</code></pre>
+        <p><strong>TextMate 2</strong></p>
+        <pre><code># Update FileMaker bundle for TextMate 2
+        cd ~/Library/Application\ Support/Avian/Bundles/filemaker.tmbundle
+        git pull</code></pre>
+
+        <h2>License</h2>
+        <p>GNU General Public License (due to some code borrowed for the tidy command).</p>
+
+        <h2>Contact</h2>
+        <p>The best way to contact me regarding this project is via the <a href="https://github.com/DonovanChan/Filemaker.tmbundle/issues">issues</a> section on GitHub</p>
+
+        <h2>History</h2>
+        <p>Original bundle by Charles Ross, puvinyel@znp.pbz<br/>
+        Forked 3/12/11 by Donovan Chandler from Matt Petrowsky</p>
+
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="http://github.com/donovanchan">Donovan Chandler</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
     </div>
+    <script src="javascripts/scale.fix.js"></script>
   </body>
 </html>

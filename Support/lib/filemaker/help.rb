@@ -24,8 +24,8 @@
 # Accesses FileMaker help documentaiton
 module FileMaker::FMHelp
 
-  HELP_BASE_URL = 'http://www.filemaker.com/12help/html/'
-  REFERENCE_URL = 'http://www.filemaker.com/12help/html/part5.html'
+  HELP_BASE_URL = 'http://www.filemaker.com/help/13/fmp/en/html/'
+  REFERENCE_URL = 'http://www.filemaker.com/help/13/fmp/en/html/part5.html'
   PATH_BASE = File.dirname(__FILE__)
 
   require "#{PATH_BASE}/help/help_error.rb"

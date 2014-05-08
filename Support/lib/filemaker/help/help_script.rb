@@ -39,7 +39,7 @@ module FileMaker::FMHelp
   end
 
   # Generated using following shell command
-  #   ruby -e 'STDOUT << "FUNCTION_URLS = {\n" << `curl -s http://www.filemaker.com/12help/html/help_script_alpha.html`.scan(%r{<div class=".*?"><a href="(.*?)" name=".*?">(.*?)</a></div>}).map { |e| "  \"#{e[1].downcase.gsub(/\s/, nil.to_s)}\"".ljust(30) + " => fmbase + \"#{e[0]}\"" }.join(",\n") << "\n}\n"'
+  #   ruby -e 'STDOUT << "SCRIPT_URLS = {\n" << `curl -s http://www.filemaker.com/help/13/fmp/en/html/help_script_alpha.html`.force_encoding("ISO-8859-1").encode("utf-8", replace: nil).scan(%r{<div class=".*?"><a href="(.*?)" name=".*?">(.*?)</a></div>}).map { |e| "  \"#{e[1].downcase.gsub(/\s/, nil.to_s).gsub(/\(.+?\)/, nil.to_s)}\"".ljust(30) + " => fmbase + \"#{e[0]}\"" }.join(",\n") << "\n}\n"' | pbcopy
   SCRIPT_URLS = {
     "addaccount"                 => fmbase + "scripts_ref2.37.28.html#1028463",
     "adjustwindow"               => fmbase + "scripts_ref2.37.5.html#1027682",

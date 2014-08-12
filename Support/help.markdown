@@ -46,7 +46,7 @@ Previous incarnations of the bundle included snippets for things like the PHP AP
 
 ## Documentation Lookup
 
-Place your cursor on a work and press ^H to search for related documentation. Documentation is provided for the following:
+Place your cursor on a word and press ^H to search for related documentation. Documentation is provided for the following:
 
 * Functions (native, fmsauc, SimpleDialog, SuperContainer)
 * Script steps

@@ -104,6 +104,22 @@ command :extract_function_names do |text|
   doc.extract_functions.join(result_delimiter)
 end
 
+desc "Given fmxmlsnippet of script steps, extracts text from comment steps."
+doc %Q{
+## Extract Script Comments
+
+### Description
+Extracts text from comment script steps from fmxmlsnippet of script steps.
+Delimits each result value with '#{result_delimiter.strip}'
+
+### Compatibility
+FileMaker 7 or newer
+}
+command :extract_comment_text do |text|
+  doc = Snippet.new(text)
+  doc.extract_comment_text.join(result_delimiter)
+end
+
 desc "Compares current fmxmlsnippet document with one on clipboard, returning functions from clipboard that are not in document."
 doc %Q{
 ## Filter Clipboard Snippet to Unique Functions

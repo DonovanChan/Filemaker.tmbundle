@@ -210,4 +210,10 @@ class FileMaker::Snippet
     @text << tpl.result(binding)
   end
 
+  # Returns array of text from script comments
+  def extract_comment_text
+    doc = REXML::Document.new(self.to_s)
+    doc.elements.to_a("//Text").reduce([]){|memo,e| memo << e.text.lstrip }
+  end
+
 end

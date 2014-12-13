@@ -5,7 +5,7 @@
 	<key>beforeRunningCommand</key>
 	<string>nop</string>
 	<key>command</key>
-	<string>#!/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby
+	<string>#!/usr/bin/ruby
 #
 # DESCRIPTION
 #	Loads XML to clipboard as FileMaker object
@@ -36,15 +36,23 @@ else
 end</string>
 	<key>input</key>
 	<string>selection</string>
+	<key>inputFormat</key>
+	<string>text</string>
 	<key>keyEquivalent</key>
 	<string>@b</string>
 	<key>name</key>
 	<string>Load Snippet to Clipboard</string>
-	<key>output</key>
-	<string>showAsTooltip</string>
+	<key>outputCaret</key>
+	<string>afterOutput</string>
+	<key>outputFormat</key>
+	<string>text</string>
+	<key>outputLocation</key>
+	<string>toolTip</string>
 	<key>scope</key>
 	<string>text.xml.filemakerClipboard</string>
 	<key>uuid</key>
 	<string>9519435C-60DB-400F-853D-356CD98B214F</string>
+	<key>version</key>
+	<integer>2</integer>
 </dict>
 </plist>

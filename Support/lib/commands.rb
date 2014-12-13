@@ -1,4 +1,4 @@
-#!/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby -KU
+#!/usr/bin/ruby -KU
 # encoding: UTF-8
 #
 # commands.rb - Allows for easy mapping of metadata to methods

@@ -1,4 +1,4 @@
-#!/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby -KU
+#!/usr/bin/ruby -KU
 # encoding: UTF-8
 
 # Replaces high ascii characters with placeholders to avoid encoding issues when sending text through shell or AppleScript

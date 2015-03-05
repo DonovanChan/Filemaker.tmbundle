@@ -10,6 +10,8 @@ For more information, please see the help file. You can access that in the bundl
 
 **Sublime Text** users, see my [FileMaker](https://github.com/DonovanChan/FileMaker) project instead.
 
+For **OS X 10.9 and older**, see the [Pre OSX 10.10](https://github.com/DonovanChan/Filemaker.tmbundle/releases/tag/PreOSX10.10) release.
+
 ## Features
 
 * Tab triggers for FileMaker functions

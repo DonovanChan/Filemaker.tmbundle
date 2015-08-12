@@ -33,12 +33,17 @@ if el
 		if autoEnter
 			autoEnterCalc = autoEnter.text
 		end
+    storage = e.elements['Storage']
+    if storage
+      storageInfo =
+        storage.attributes['global'],
+        storage.attributes['maxRepetition']
+    end
 		puts [ name,
 			e.attributes['dataType'],
 			e.attributes['fieldType'],
 			e.elements['Comment'].text,
-			e.elements['Storage'].attributes['global'],
-			e.elements['Storage'].attributes['maxRepetition'],
+			storageInfo,
 			autoEnterCalc
 		].join("\t")
 	}
@@ -53,12 +58,16 @@ if el
 		if autoEnter
 			autoEnterCalc = autoEnter.text
 		end
-		puts [ e.attributes['name'],
+    storage = e.elements['Storage']
+    if storage
+      storageInfo = storage.attributes['global'],
+        storage.attributes['maxRepetition']
+    end
+    puts [ e.attributes['name'],
 			e.attributes['dataType'],
 			e.attributes['fieldType'],
 			e.elements['Comment'].text,
-			e.elements['Storage'].attributes['global'],
-			e.elements['Storage'].attributes['maxRepetition'],
+      storageInfo,
 			autoEnterCalc
 		].join("\t")
 	}
@@ -73,11 +82,19 @@ doc.elements.each("//DDRInfo/Field") { |e|
 }</string>
 	<key>input</key>
 	<string>selection</string>
+	<key>inputFormat</key>
+	<string>text</string>
 	<key>name</key>
 	<string>Extract Field Metadata**</string>
-	<key>output</key>
-	<string>openAsNewDocument</string>
+	<key>outputCaret</key>
+	<string>afterOutput</string>
+	<key>outputFormat</key>
+	<string>text</string>
+	<key>outputLocation</key>
+	<string>newWindow</string>
 	<key>uuid</key>
 	<string>D0997D35-343E-4ECB-9594-A9E2A9BBBBAA</string>
+	<key>version</key>
+	<integer>2</integer>
 </dict>
 </plist>

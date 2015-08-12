@@ -203,7 +203,7 @@ You can save the clipboard to a text file and run this command against it, or yo
 * Depends on CocoaDialog implementation in TextMate for showing dialog. Therefore, this command is currently only suported in TextMate.
 * CocoaDialog has been erratic here, so try again if it doesn't work the first time.
 }
-command :save_functions do |text|
+ command :save_functions do |text|
   begin
     # Not using ui.rb because its implementation of fileselect didn't work
     # Instead, call directly to CocoaDialog through shell
@@ -224,14 +224,14 @@ command :save_functions do |text|
     doc = REXML::Document.new text
 
     # Prompt for preferences
-    dir = `#{dPath} fileselect \
+    dir = `'#{dPath}' fileselect \
     --title "Select directory" \
     --text "Functions will be saved to this directory" \
     --select-only-directories`
     if dir.empty? then exit end
 
     # Prompt for file extension
-    ext = `#{dPath} inputbox \
+    ext = `'#{dPath}' inputbox \
     --title "File extension" \
     --informative-text "Enter extension for function files" \
     --text "#{ext}" \

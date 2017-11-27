@@ -74,12 +74,12 @@ module Commands
 end
 
 
-module Delegator
+module CommandDelegator
   def self.delegate(*methods)
     methods.each do |method_name|
       define_method(method_name) do |*args, &block|
         return super(*args, &block) if respond_to? method_name
-        Delegator.target.send(method_name, *args, &block)
+        CommandDelegator.target.send(method_name, *args, &block)
       end
       private method_name
     end
@@ -94,4 +94,4 @@ module Delegator
   self.target = Commands
 end
 
-include Delegator
+include CommandDelegator
